@@ -7,15 +7,26 @@
 </ion-header>
 
 <ion-content padding>
+  
 <ion-list>
 
-<ion-item class="input_item">
-  <ion-input type="number" placeholder="Mobile number (Ex: +91xxxxxxxxxx)" [(ngModel)]="phone"></ion-input>
+  <ion-item>
+  <button ion-button block (click)="send()">Send</button>
+  </ion-item>
+  <ion-item>
+    <ion-input type="number" [(ngModel)]="code" placeholder="Enter OTP"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button ion-button block (click)="verify()">Sign In</button>
+  </ion-item>
+<!-- <ion-item class="input_item">
+ <ion-label stacked>Phone Number</ion-label>
+  <ion-input type="number" [(ngModel)]="phoneNumber"></ion-input>
 </ion-item>
 
   <ion-item>
-    <button ion-button block (click)="send()">Sign up</button>
-  </ion-item>
+    <button ion-button block (click)="signIn(phoneNumber)">Sign In</button>
+  </ion-item> -->
 
 </ion-list>
 </ion-content>

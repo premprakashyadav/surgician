@@ -1,28 +1,42 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
+import * as firebase from 'firebase'
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController) {
+verificationId:any;
+code:string='';
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
 
   }
 
-  // signIn() {
-  //   // add a local variable to store navCtrl object
-  //   let thatNavCtrl = this.navCtrl;
-  //   //Step 1 — Pass the mobile number for verification
-  //   let tell = "+" + this.phone;
-  //   window.FirebasePlugin.verifyPhoneNumber(tell, 60, function (credential) {
-  //     let verificationId = credential.verificationId;
-  //     //This is STEP 2 — passing verification ID to verify Page
-  //     thatNavCtrl.push(VerificationPage, { verificationid: verificationId, phone: phoneNumber });
-  //   }, (error) => {
-  //     console.error(error);
-  //   });
-  // }
+  send(){
+    (<any>window).FirebasePlugin.verifyPhoneNumber(9987557259, 60, (credential) => {
+    alert("SMS send successfully");
+      console.log(credential);
+
+      this.verificationId = credential.verificationId;
+
+    },(error) => {
+      console.error(error);
+    });
+  }
+
+  verify(){
+    let signInCredential= firebase.auth.PhoneAuthProvider.credential(this.verificationId,this.code);
+    firebase.auth.signInWithCredential(signInCredential).then((info) =>{
+      console.log(info);
+    }, (error) => {
+      console.error(error);
+    });
+  }
+
+
+
+  
+
 
 }
