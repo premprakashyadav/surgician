@@ -10,11 +10,11 @@
 <ion-list>
 
 <ion-item class="input_item">
-  <ion-input type="number" placeholder="Mobile number (Ex: +91xxxxxxxxxx)" [(ngModel)]="phoneNumber"></ion-input>
+  <ion-input type="number" placeholder="Mobile number (Ex: +91xxxxxxxxxx)" [(ngModel)]="phone"></ion-input>
 </ion-item>
 
   <ion-item>
-    <button block (click)="signIn(phoneNumber)">Sign In</button>
+    <button ion-button block (click)="send()">Sign up</button>
   </ion-item>
 
 </ion-list>
