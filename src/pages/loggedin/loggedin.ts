@@ -25,4 +25,8 @@ export class LoggedinPage {
     console.log('ionViewDidLoad LoggedinPage');
   }
 
+  uploadPrescription() {
+    this.navCtrl.push('UploadprescriptionPage');
+  }
+
 }
