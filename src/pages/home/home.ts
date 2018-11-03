@@ -1,42 +1,33 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, AlertController } from 'ionic-angular';
-import * as firebase from 'firebase'
+import { Component, ViewChild } from '@angular/core';
+import { NavController, AlertController } from 'ionic-angular'; 
+
+import { LoginPage } from '../login/login';
+import { RegisterPage } from '../register/register';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-verificationId:any;
-code:string='';
+
+	@ViewChild('username') uname;
+	@ViewChild('password') password;
+
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
 
   }
 
-  send(){
-    (<any>window).FirebasePlugin.verifyPhoneNumber(9987557259, 60, (credential) => {
-    alert("SMS send successfully");
-      console.log(credential);
-
-      this.verificationId = credential.verificationId;
-
-    },(error) => {
-      console.error(error);
-    });
+  signIn() {
+  	this.navCtrl.push(LoginPage);
   }
 
-  verify(){
-    let signInCredential= firebase.auth.PhoneAuthProvider.credential(this.verificationId,this.code);
-    firebase.auth.signInWithCredential(signInCredential).then((info) =>{
-      console.log(info);
-    }, (error) => {
-      console.error(error);
-    });
+  register() {
+  	this.navCtrl.push(RegisterPage);
   }
 
-
-
-  
+  uploadPrescription(){
+    
+  }
 
 
 }

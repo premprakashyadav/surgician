@@ -1,32 +1,14 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
+<ion-content padding class="welocomebg">
+  <figure>
+    <img src="assets/imgs/logo.png"/>
+  </figure>
+  <h2>Welcome to Surgician</h2>
   
-<ion-list>
+  <ion-grid>
+   <ion-row>
+      <ion-col col-6>	<button ion-button (click)="signIn()" full>Sign In</button></ion-col>
+      <ion-col col-6><button ion-button (click)="register()" full>Register</button></ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <ion-item>
-  <button ion-button block (click)="send()">Send</button>
-  </ion-item>
-  <ion-item>
-    <ion-input type="number" [(ngModel)]="code" placeholder="Enter OTP"></ion-input>
-  </ion-item>
-  <ion-item>
-    <button ion-button block (click)="verify()">Sign In</button>
-  </ion-item>
-<!-- <ion-item class="input_item">
- <ion-label stacked>Phone Number</ion-label>
-  <ion-input type="number" [(ngModel)]="phoneNumber"></ion-input>
-</ion-item>
-
-  <ion-item>
-    <button ion-button block (click)="signIn(phoneNumber)">Sign In</button>
-  </ion-item> -->
-
-</ion-list>
 </ion-content>
