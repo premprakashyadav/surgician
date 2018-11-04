@@ -6,7 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ImagePicker } from '@ionic-native/image-picker';
-import { Base64 } from '@ionic-native/base64'
+import { Base64 } from '@ionic-native/base64';
+import { Camera } from '@ionic-native/camera';
+import { EmailComposer } from '@ionic-native/email-composer';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -55,7 +57,9 @@ const firebaseAuth = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ImagePicker,
-    Base64
+    Base64,
+    EmailComposer,
+    Camera
   ]
 })
 export class AppModule {}

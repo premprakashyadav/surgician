@@ -15,7 +15,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class LoggedinPage {
 
-	email: string;
+  email: string;
+  showmodal : boolean= false;
 
   constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
  	this.email = fire.auth.currentUser.email;
@@ -28,13 +29,17 @@ export class LoggedinPage {
   uploadPrescription() {
     this.navCtrl.push('UploadprescriptionPage');
   }
+  dignostics(){
+this.showmodal = !this.showmodal;
+
+}
 
   visitLab(){
-
+    this.navCtrl.push('VisitorsPage');
   }
 
   homeService(){
-    
+    this.navCtrl.push('HomeservicePage');
   }
 
 }
