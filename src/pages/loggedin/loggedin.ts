@@ -34,6 +34,10 @@ this.showmodal = !this.showmodal;
 
 }
 
+close(){
+  this.showmodal = !this.showmodal;
+}
+
   visitLab(){
     this.navCtrl.push('VisitorsPage');
   }

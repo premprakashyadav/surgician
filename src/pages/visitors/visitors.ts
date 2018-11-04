@@ -10,7 +10,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 })
 export class VisitorsPage {
   currentImage = null;
-  regData = { name:'', mobile: '', address: '', currentImage:'' };
+  regData = { name:'', mobile: '', address: '' };
   constructor(public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
   }
  
@@ -37,7 +37,7 @@ export class VisitorsPage {
         this.currentImage
       ],
       subject: 'Prescription',
-      body: '<h4>Find Below Attachment</h4><br/>' +'<h5>Name:</h5>' + this.regData.name + '<br/><h5>Mobile:</h5>' + this.regData.mobile + '<br/><h5>Address:</h5>' + this.regData.address,
+      body: '<h4>Find Below Attachment</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5>',
       isHtml: true
     };
  

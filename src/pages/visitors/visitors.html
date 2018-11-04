@@ -23,8 +23,8 @@
             <ion-input type="text" placeholder="Address" [(ngModel)]="regData.address" name="address" required></ion-input>
           </ion-item>
           <ion-item>
-              <ion-input type="text" placeholder="Upload Prescription" [(ngModel)]="regData.currentImage" name="currentImage" readonly="true" (click)="captureImage()"></ion-input>
-              <!-- <img [src]="currentImage" *ngIf="currentImage" /> -->
+              <button ion-button full color="secondary"  (click)="captureImage()">Upload Prescription</button>
+              <img [src]="currentImage" *ngIf="currentImage" />
             </ion-item>
             <ion-item>
                 <button ion-button full (click)="sendEmail()" [disabled]="regForm.invalid">Send Email</button>
