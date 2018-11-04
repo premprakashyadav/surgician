@@ -16,6 +16,13 @@ page-loggedin {
         right: 15px;
         background-color: #fff;
         padding: 15px;
+        .icon{
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            font-size: 20px;
+            color: #00afef;
+        }
     }
 }
 }

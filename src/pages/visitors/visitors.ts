@@ -10,7 +10,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 })
 export class VisitorsPage {
   currentImage = null;
-  regData = { name:'', mobile: '', address: '' };
+  regData = { name:'', mobile: '', address: '', currentImage:'' };
   constructor(public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
   }
  
@@ -32,12 +32,12 @@ export class VisitorsPage {
   sendEmail() {
     let email = {
       to: 'prem.sy89@gmail.com',
-      cc: 'prem.sy@rediffmail.com',
+      cc: 'drratnakaryadav@gmail.com',
       attachments: [
         this.currentImage
       ],
       subject: 'Prescription',
-      body: 'Find Below Attachment' + this.regData.name + this.regData.mobile + this.regData.address,
+      body: '<h4>Find Below Attachment</h4><br/>' +'<h5>Name:</h5>' + this.regData.name + '<br/><h5>Mobile:</h5>' + this.regData.mobile + '<br/><h5>Address:</h5>' + this.regData.address,
       isHtml: true
     };
  
