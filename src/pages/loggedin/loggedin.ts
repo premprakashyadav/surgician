@@ -29,4 +29,12 @@ export class LoggedinPage {
     this.navCtrl.push('UploadprescriptionPage');
   }
 
+  visitLab(){
+
+  }
+
+  homeService(){
+    
+  }
+
 }

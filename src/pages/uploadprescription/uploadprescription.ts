@@ -27,13 +27,13 @@ mailgunApiKey: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, private imagePicker: ImagePicker,
     private base64: Base64,http: HttpClient) {
       this.http = http;
-      this.mailgunUrl = "Mail GUN URL";
-      this.mailgunApiKey = window.btoa("api:API KEY");
+      this.mailgunUrl = "mail.surgician.com";
+      this.mailgunApiKey = window.btoa("api:key-c7046fa102dbf6f31c5af50717b1677a");
   }
 
-  send(recipient: string, subject: string, message: string) {
+    register() {
     
-    this.http.post("https://api.mailgun.net/v3/" + this.mailgunUrl + "/messages", "from=admin@test101.com&to=" + recipient + "&subject=" + subject + "&text=" + message,
+    this.http.post("https://api.mailgun.net/v3/" + this.mailgunUrl + "/messages", "from=admin@surgician.com&to=" + this.regData.email + "&subject=" + this.regData.fullname + "&text=" + this.regData.avatar,
       {
         headers: { 'Authorization': 'Basic ' + this.mailgunApiKey, "Content-Type": "application/x-www-form-urlencoded" },
       }).subscribe(success => {
@@ -42,6 +42,17 @@ mailgunApiKey: string;
         console.log("ERROR -> " + JSON.stringify(error));
       });
   }
+  // send(recipient: string, subject: string, message: string) {
+    
+  //   this.http.post("https://api.mailgun.net/v3/" + this.mailgunUrl + "/messages", "from=admin@test101.com&to=" + recipient + "&subject=" + subject + "&text=" + message,
+  //     {
+  //       headers: { 'Authorization': 'Basic ' + this.mailgunApiKey, "Content-Type": "application/x-www-form-urlencoded" },
+  //     }).subscribe(success => {
+  //       console.log("SUCCESS -> " + JSON.stringify(success));
+  //     }, error => {
+  //       console.log("ERROR -> " + JSON.stringify(error));
+  //     });
+  // }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UploadprescriptionPage');

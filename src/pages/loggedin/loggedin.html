@@ -9,11 +9,11 @@
 
 
 <ion-content padding>
-  {{email}}
+  <!-- {{email}} -->
   <h2>Doctor Provider</h2>
   <ion-grid>
     <ion-row>
-        <ion-col col-6>	<button ion-button  full class="common_btn btn_1">
+        <ion-col col-6>	<button ion-button  full class="common_btn btn_1" (click)="dignostics()">
 Diagnostics
         </button></ion-col>
         <ion-col col-6><button ion-button full class="common_btn btn_1" (click)="uploadPrescription()">
@@ -31,3 +31,13 @@ Diagnostics
   </ion-row>
 </ion-grid>
 </ion-content>
+<div class="overlay_modal">
+  <div class="modal_inner">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 (click)="visitLab()">Visit a Lab</ion-col>
+        <ion-col col-6 (click)="homeService()">Home Service</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>

@@ -1,13 +1,15 @@
 page-home {
 	.welocomebg{
-		// background-color: #563ada;
+		background-color: rgba(181, 255, 224, 0.3);
 		figure{
-			margin:50px 0 20px 0;
+			margin:100px 0 20px 0;
 		}
-		h2{
+		h2,p{
 			
 			text-align: center;
 		}
-
+.grid{
+	margin-top: 30px;
+}
 	}
 }
