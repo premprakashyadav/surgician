@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the HealthcheckPage page.
@@ -18,9 +20,12 @@ import { EmailComposer } from '@ionic-native/email-composer';
 export class HealthcheckPage {
   currentImage = null;
   regData = { name:'', mobile: '', address: '' };
-  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
+  constructor(private fire: AngularFireAuth,private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
   }
- 
+  logOut(){
+    this.fire.auth.signOut();
+	this.navCtrl.setRoot(HomePage);
+  }
  
   captureImage() {
     const options: CameraOptions = {

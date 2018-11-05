@@ -45,5 +45,11 @@ close(){
   homeService(){
     this.navCtrl.push('HomeservicePage');
   }
+  healthCheck(){
+    this.navCtrl.push('HealthcheckPage');
+  }
+  requestCall(){
+    this.navCtrl.push('RequestcallPage');
+  }
 
 }

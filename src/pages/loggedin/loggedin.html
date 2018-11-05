@@ -21,14 +21,11 @@ Diagnostics
         </button></ion-col>
       </ion-row>
       <ion-row>
-          <ion-col col-6>	<button ion-button  full class="common_btn btn_1">Health Checks</button></ion-col>
-          <ion-col col-6><button ion-button  full class="common_btn btn_1">Request a Call</button></ion-col>
+          <ion-col col-6>	<button ion-button  full class="common_btn btn_1" (click)="healthCheck()">Health Checks</button></ion-col>
+          <ion-col col-6><button ion-button  full class="common_btn btn_1" (click)="requestCall()">Request a Call</button></ion-col>
         </ion-row>
   
-  <ion-row>
-    <ion-col col-6>	<button ion-button (click)="signIn()" full>Sign In</button></ion-col>
-    <ion-col col-6><button ion-button (click)="register()" full>Register</button></ion-col>
-  </ion-row>
+ 
 </ion-grid>
 </ion-content>
 <div class="overlay_modal" *ngIf="showmodal">
