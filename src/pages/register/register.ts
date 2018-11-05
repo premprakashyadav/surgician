@@ -37,9 +37,8 @@ export class RegisterPage {
   }
 
   registerUser() {
-    this.fire.auth.createUserWithEmailAndPassword(this.user.value + '@surgician.com', this.password.value)
+    this.fire.auth.createUserWithEmailAndPassword(this.user.value, this.password.value)
     .then(data => {
-      console.log('got data ', data);
       this.alert('Registered!');
       this.navCtrl.setRoot(LoginPage);
     })
@@ -47,7 +46,7 @@ export class RegisterPage {
       console.log('got an error ', error);
       this.alert(error.message);
     });
-  	console.log('Would register user with ', this.user.value, this.password.value);
+  	
   }
 
 }

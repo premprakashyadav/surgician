@@ -14,31 +14,29 @@
 
 
 <ion-content padding>
-    <form (ngSubmit)="register()" #regForm="ngForm">
-        <ion-list>
-          <ion-item>
-            <ion-label fixed>Avatar</ion-label>
-            <ion-avatar item-end>
-              <img src="{{imgPreview}}"  (click)="getPhoto()">
-            </ion-avatar>
+  <form  #regForm="ngForm">
+    <ion-list>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Name" [(ngModel)]="regData.name" name="name" required></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-input type="number" placeholder="Mobile" [(ngModel)]="regData.mobile" name="mobile" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Address" [(ngModel)]="regData.address" name="address" required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label fixed>Email</ion-label>
-            <ion-input type="email" [(ngModel)]="regData.email" name="email" required></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label fixed>Password</ion-label>
-            <ion-input type="password" [(ngModel)]="regData.password" name="password" required></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label fixed>Full Name</ion-label>
-            <ion-input type="text" [(ngModel)]="regData.fullname" name="fullname" required></ion-input>
-          </ion-item>
-        </ion-list>
-        <div padding>
-          <button ion-button full [disabled]="regForm.invalid">Register</button>
-        </div>
-      </form>
+              <button ion-button full color="secondary"  (click)="captureImage()">Upload Prescription</button>
+              <img [src]="currentImage" *ngIf="currentImage" />
+            </ion-item>
+            <ion-item>
+                <button ion-button full (click)="sendEmail()" [disabled]="regForm.invalid">Submit</button>
+              </ion-item>
+      
+      </ion-list>
+    </form>
    
 
 </ion-content>

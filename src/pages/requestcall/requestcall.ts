@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 /**
  * Generated class for the RequestcallPage page.
@@ -14,12 +16,36 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'requestcall.html',
 })
 export class RequestcallPage {
+  
+  regData = { name:'', mobile: '', address: '' };
+  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
+  }
+ 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  alert(message: string) {
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
   }
 
+ 
+  sendEmail() {
+    let email = {
+      to: 'prem.sy89@gmail.com',
+      cc: 'drratnakaryadav@gmail.com',
+      subject: 'Details for Requset a Call',
+      body: '<h4>Find Below Details</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5>',
+      isHtml: true
+    };
+ 
+    this.emailComposer.open(email);
+  }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RequestcallPage');
+    console.log('ionViewDidLoad VisitorsPage');
   }
 
 }
+

@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { HomePage } from '../home/home';
 
-/**
- * Generated class for the LoggedinPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-loggedin',
@@ -24,6 +19,11 @@ export class LoggedinPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoggedinPage');
+  }
+
+  logOut(){
+    this.fire.auth.signOut();
+	this.navCtrl.setRoot(HomePage);
   }
 
   uploadPrescription() {

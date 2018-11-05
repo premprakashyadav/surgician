@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Http } from '@angular/http';
-import { ImagePicker } from '@ionic-native/image-picker';
-import { Base64 } from '@ionic-native/base64';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { EmailComposer } from '@ionic-native/email-composer';
+//import { Base64 } from '@ionic-native/base64';
 
 /**
  * Generated class for the UploadprescriptionPage page.
@@ -18,59 +17,51 @@ import { Base64 } from '@ionic-native/base64';
   templateUrl: 'uploadprescription.html',
 })
 export class UploadprescriptionPage {
-  regData = { avatar:'', email: '', password: '', fullname: '' };
-imgPreview = 'assets/imgs/blank-avatar.jpg';
-http: HttpClient;
-mailgunUrl: string;
-mailgunApiKey: string;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private imagePicker: ImagePicker,
-    private base64: Base64,http: HttpClient) {
-      this.http = http;
-      this.mailgunUrl = "mail.surgician.com";
-      this.mailgunApiKey = window.btoa("api:key-c7046fa102dbf6f31c5af50717b1677a");
+  currentImage = null;
+  regData = { name:'', mobile: '', address: '' };
+  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
+  }
+ 
+ 
+  captureImage() {
+    const options: CameraOptions = {
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: this.camera.DestinationType.FILE_URI,
+    }
+ 
+    this.camera.getPicture(options).then((imageData) => {
+      this.currentImage = imageData;
+    }, (err) => {
+      // Handle error
+      console.log('Image error: ', err);
+    });
   }
 
-    register() {
-    
-    this.http.post("https://api.mailgun.net/v3/" + this.mailgunUrl + "/messages", "from=admin@surgician.com&to=" + this.regData.email + "&subject=" + this.regData.fullname + "&text=" + this.regData.avatar,
-      {
-        headers: { 'Authorization': 'Basic ' + this.mailgunApiKey, "Content-Type": "application/x-www-form-urlencoded" },
-      }).subscribe(success => {
-        console.log("SUCCESS -> " + JSON.stringify(success));
-      }, error => {
-        console.log("ERROR -> " + JSON.stringify(error));
-      });
+  alert(message: string) {
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
   }
-  // send(recipient: string, subject: string, message: string) {
-    
-  //   this.http.post("https://api.mailgun.net/v3/" + this.mailgunUrl + "/messages", "from=admin@test101.com&to=" + recipient + "&subject=" + subject + "&text=" + message,
-  //     {
-  //       headers: { 'Authorization': 'Basic ' + this.mailgunApiKey, "Content-Type": "application/x-www-form-urlencoded" },
-  //     }).subscribe(success => {
-  //       console.log("SUCCESS -> " + JSON.stringify(success));
-  //     }, error => {
-  //       console.log("ERROR -> " + JSON.stringify(error));
-  //     });
-  // }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UploadprescriptionPage');
-  }
-  getPhoto() {
-    let options = {
-      maximumImagesCount: 1
+ 
+  sendEmail() {
+    let email = {
+      to: 'prem.sy89@gmail.com',
+      cc: 'drratnakaryadav@gmail.com',
+      attachments: [
+        this.currentImage
+      ],
+      subject: 'Order for Medicine',
+      body: '<h4>Find Below Details:</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5>',
+      isHtml: true
     };
-    this.imagePicker.getPictures(options).then((results) => {
-      for (var i = 0; i < results.length; i++) {
-          this.imgPreview = results[i];
-          this.base64.encodeFile(results[i]).then((base64File: string) => {
-            this.regData.avatar = base64File;
-          }, (err) => {
-            console.log(err);
-          });
-      }
-    }, (err) => { });
+ 
+    this.emailComposer.open(email);
+  }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad VisitorsPage');
   }
 
 }

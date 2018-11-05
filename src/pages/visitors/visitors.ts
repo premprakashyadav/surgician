@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { EmailComposer } from '@ionic-native/email-composer';
 
@@ -11,7 +11,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 export class VisitorsPage {
   currentImage = null;
   regData = { name:'', mobile: '', address: '' };
-  constructor(public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
+  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
   }
  
  
@@ -28,6 +28,15 @@ export class VisitorsPage {
       console.log('Image error: ', err);
     });
   }
+
+  alert(message: string) {
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
+  }
+
  
   sendEmail() {
     let email = {
@@ -36,8 +45,8 @@ export class VisitorsPage {
       attachments: [
         this.currentImage
       ],
-      subject: 'Prescription',
-      body: '<h4>Find Below Attachment</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5>',
+      subject: 'Details for Visit at Lab',
+      body: '<h4>Find Below Details</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5>',
       isHtml: true
     };
  

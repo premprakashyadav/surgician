@@ -36,9 +36,9 @@ export class LoginPage {
   }
 
   signInUser() {
-    this.fire.auth.signInWithEmailAndPassword(this.user.value + '@surgician.com', this.password.value)
+    this.fire.auth.signInWithEmailAndPassword(this.user.value, this.password.value)
     .then( data => {
-      console.log('got some data', this.fire.auth.currentUser);
+      //console.log('got some data', this.fire.auth.currentUser);
       this.alert('Success! You\'re logged in');
       this.navCtrl.setRoot( LoggedinPage );
       // user is logged in
@@ -47,7 +47,7 @@ export class LoginPage {
       console.log('got an error', error);
       this.alert(error.message);
     })
-  	console.log('Would sign in with ', this.user.value, this.password.value);
+  	
   }
 
 }
