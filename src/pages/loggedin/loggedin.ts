@@ -48,8 +48,28 @@ close(){
   healthCheck(){
     this.navCtrl.push('HealthcheckPage');
   }
+
+  healthCare(){
+    this.navCtrl.push('HomehealthcarePage');
+  }
   requestCall(){
     this.navCtrl.push('RequestcallPage');
+  }
+  secondOpenion(){
+    this.navCtrl.push('SecondopenionPage');
+  }
+  onlineAppoint(){
+    this.navCtrl.push('OnlineappointmentPage'); 
+  }
+  anyOther(){
+    this.navCtrl.push('AnyotherPage');
+  }
+  ourPartner(){
+    this.navCtrl.push('PartnerPage');
+  }
+
+  doctor(){
+    this.navCtrl.push('DoctorPage');
   }
 
 }

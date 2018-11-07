@@ -24,9 +24,26 @@ Diagnostics
           <ion-col col-6>	<button ion-button  full class="common_btn btn_1" (click)="healthCheck()">Health Checks</button></ion-col>
           <ion-col col-6><button ion-button  full class="common_btn btn_1" (click)="requestCall()">Request a Call</button></ion-col>
         </ion-row>
+        <ion-row>
+          <ion-col col-6>	<button ion-button  full class="common_btn btn_1" (click)="secondOpenion()">Second Openion</button></ion-col>
+          <ion-col col-6><button ion-button  full class="common_btn btn_1" (click)="onlineAppoint()">Online Appointment</button></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-6>	<button ion-button  full class="common_btn btn_1" (click)="healthCare()">Home<br/>Healthcare</button></ion-col>
+          <ion-col col-6>	<button ion-button  full class="common_btn btn_1" (click)="anyOther()">Any Other Support</button></ion-col>
+          
+        </ion-row>
   
  
 </ion-grid>
+<ion-list>
+    <button (click)="doctor()" ion-item>
+      Doctor
+    </button> 
+    <button (click)="ourPartner()" ion-item>
+        Our Partner
+      </button>  
+    </ion-list>
 </ion-content>
 <div class="overlay_modal" *ngIf="showmodal">
   <div class="modal_inner">
