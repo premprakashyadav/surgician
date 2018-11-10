@@ -14,7 +14,7 @@ import { HomePage } from '../home/home';
 })
 export class OnlineappointmentPage {
   currentImage = null;
-  regData = { name:'', mobile: '', address: '' };
+  regData = { name:'', mobile: '', address: '', docname:'', special:'', docno:'', myDate:'' };
   constructor(private fire: AngularFireAuth,private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
   }
  
@@ -23,19 +23,7 @@ export class OnlineappointmentPage {
 	this.navCtrl.setRoot(HomePage);
   }
  
-  captureImage() {
-    const options: CameraOptions = {
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      destinationType: this.camera.DestinationType.FILE_URI,
-    }
- 
-    this.camera.getPicture(options).then((imageData) => {
-      this.currentImage = imageData;
-    }, (err) => {
-      // Handle error
-      console.log('Image error: ', err);
-    });
-  }
+
 
   alert(message: string) {
     this.alertCtrl.create({
@@ -50,11 +38,8 @@ export class OnlineappointmentPage {
     let email = {
       to: 'prem.sy89@gmail.com',
       cc: 'drratnakaryadav@gmail.com',
-      attachments: [
-        this.currentImage
-      ],
-      subject: 'Details for Visit at Lab',
-      body: '<h4>Find Below Details</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5>',
+      subject: 'Details for Online Appointment',
+      body: '<h4>Find Below Details</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><h5>Doctor Name:' + this.regData.docname + '</h5><br/><h5>Specialization:' + this.regData.special + '</h5></br/><h5>Doctor Contact No:' + this.regData.docno + '</h5><br/><h5>Appointment Date & Time:' + this.regData.myDate + '</h5><br/><h5>Comments:' + this.regData.address + '</h5>',
       isHtml: true
     };
  

@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Visit at Lab<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+    <ion-title>Homehealth Care<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -23,17 +23,22 @@
             <ion-input type="text" placeholder="Comment" [(ngModel)]="regData.address" name="address" required></ion-input>
           </ion-item>
           
-            <ion-item>
-                <button ion-button full (click)="sendEmail()" [disabled]="regForm.invalid">Send Email</button>
-              </ion-item>
       
       </ion-list>
       <ion-list radio-group [(ngModel)]="regData.equipment" name="equipment">
+          <h6 padding>Do you need medical equipment</h6>
       <ion-item>
-          <ion-label>Do you need medical equipment</ion-label><br/>
+          <ion-label>Yes</ion-label>
           <ion-radio value="yes"></ion-radio>
+      </ion-item>
+      <ion-item>
+          <ion-label>No</ion-label>
           <ion-radio value="no"></ion-radio>
       </ion-item>
+      
+      <ion-item>
+          <button ion-button full (click)="sendEmail()" [disabled]="regForm.invalid">Send Email</button>
+        </ion-item>
       
     </ion-list>
     </form>

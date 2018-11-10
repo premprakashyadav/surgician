@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Visit at Lab<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+    <ion-title>Online Appointment<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,7 +20,20 @@
           <ion-input type="number" placeholder="Mobile" [(ngModel)]="regData.mobile" name="mobile" required></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="text" placeholder="Address" [(ngModel)]="regData.address" name="address" required></ion-input>
+            <ion-input type="text" placeholder="Doctor Name" [(ngModel)]="regData.docname" name="docname" required></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-input type="text" placeholder="Specialization" [(ngModel)]="regData.special" name="special"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="number" placeholder="Doctor's Contact No." [(ngModel)]="regData.docno" name="docno"></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label>Appointment Date & Time</ion-label>
+                  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="regData.myDate" name="myDate"></ion-datetime>
+                </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Comments" [(ngModel)]="regData.address" name="address" required></ion-input>
           </ion-item>
           <ion-item>
               <button ion-button full color="secondary"  (click)="captureImage()">Upload Prescription</button>
@@ -33,27 +46,6 @@
       </ion-list>
     </form>
 
-    <h4>Lab Services:</h4>
-<p>Our team will suggest you nearest area help in appointment.</p> 
-<ion-list>
-  <button ion-item>
-    MRI Scan
-  </button>  
-  <button ion-item>
-    CT Scan
-  </button> 
-  <button ion-item>
-    Ultrasound
-  </button> 
-  <button ion-item>
-    PET-CT
-  </button> 
-  <button ion-item>
-    X-Ray
-  </button> 
-  <button ion-item>
-    Doppler
-  </button> 
-</ion-list>
+
  
 </ion-content>
