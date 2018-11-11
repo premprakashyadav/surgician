@@ -32,6 +32,12 @@ export class HomehealthcarePage {
 
  
   sendEmail() {
+    if(this.regData.mobile.length < 10)
+    {
+      this.alert('Please Enter 10 Digit Mobile Number');
+      return false;
+    }
+    else{
     let email = {
       to: 'prem.sy89@gmail.com',
       cc: 'drratnakaryadav@gmail.com',
@@ -42,8 +48,7 @@ export class HomehealthcarePage {
  
     this.emailComposer.open(email);
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VisitorsPage');
-  }
+}
+
 
 }

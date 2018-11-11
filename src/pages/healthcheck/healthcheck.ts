@@ -5,12 +5,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage } from '../home/home';
 
-/**
- * Generated class for the HealthcheckPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -19,7 +14,7 @@ import { HomePage } from '../home/home';
 })
 export class HealthcheckPage {
   currentImage = null;
-  regData = { name:'', mobile: '', address: '' };
+  regData = { name:'', mobile: '', address: '', comments:'' };
   constructor(private fire: AngularFireAuth,private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
   }
   logOut(){
@@ -51,6 +46,12 @@ export class HealthcheckPage {
 
  
   sendEmail() {
+    if(this.regData.mobile.length < 10)
+    {
+      this.alert('Please Enter 10 Digit Mobile Number');
+      return false;
+    }
+    else{
     let email = {
       to: 'prem.sy89@gmail.com',
       cc: 'drratnakaryadav@gmail.com',
@@ -58,12 +59,13 @@ export class HealthcheckPage {
         this.currentImage
       ],
       subject: 'Details for Health Checkup',
-      body: '<h4>Find Below Details</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5>',
+      body: '<h4>Find Below Details</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5><br/><h5>Comments:' + this.regData.comments + '</h5>',
       isHtml: true
     };
  
     this.emailComposer.open(email);
   }
+}
  
 
 }

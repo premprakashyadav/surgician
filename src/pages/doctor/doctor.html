@@ -17,10 +17,13 @@
         </ion-item>
       
         <ion-item>
-          <ion-input type="number" placeholder="Mobile" [(ngModel)]="regData.mobile" name="mobile" required></ion-input>
+          <ion-input type="number" placeholder="Mobile" [(ngModel)]="regData.mobile" name="mobile" maxLength="10" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-input type="text" placeholder="Address" [(ngModel)]="regData.address" name="address" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Comments" [(ngModel)]="regData.comments" name="comments"></ion-input>
           </ion-item>
           <ion-item>
               <button ion-button full color="secondary"  (click)="captureImage()">Upload Document</button>
