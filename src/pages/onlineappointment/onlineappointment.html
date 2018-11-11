@@ -17,7 +17,7 @@
         </ion-item>
       
         <ion-item>
-          <ion-input type="number" placeholder="Mobile" [(ngModel)]="regData.mobile" name="mobile" required></ion-input>
+          <ion-input type="number" placeholder="Mobile" [(ngModel)]="regData.mobile" name="mobile" maxLength="10" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-input type="text" placeholder="Doctor Name" [(ngModel)]="regData.docname" name="docname" required></ion-input>
@@ -26,7 +26,7 @@
               <ion-input type="text" placeholder="Specialization" [(ngModel)]="regData.special" name="special"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-input type="number" placeholder="Doctor's Contact No." [(ngModel)]="regData.docno" name="docno"></ion-input>
+                <ion-input type="number" placeholder="Doctor's Contact No." [(ngModel)]="regData.docno" name="docno" maxLength="10" required></ion-input>
               </ion-item>
               <ion-item>
                   <ion-label>Appointment Date & Time</ion-label>

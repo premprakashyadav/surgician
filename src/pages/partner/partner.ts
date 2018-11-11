@@ -14,7 +14,7 @@ import { HomePage } from '../home/home';
 })
 export class PartnerPage {
   currentImage = null;
-  regData = { name:'', mobile: '', address: '' };
+  regData = { name:'', mobile: '', address: '', comments:'' };
   constructor(private fire: AngularFireAuth,private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
   }
  
@@ -34,6 +34,12 @@ export class PartnerPage {
 
  
   sendEmail() {
+    if(this.regData.mobile.length < 10)
+    {
+      this.alert('Please Enter 10 Digit Mobile Number');
+      return false;
+    }
+    else{
     let email = {
       to: 'prem.sy89@gmail.com',
       cc: 'drratnakaryadav@gmail.com',
@@ -41,12 +47,13 @@ export class PartnerPage {
         this.currentImage
       ],
       subject: 'Details for Become a Partner',
-      body: '<h4>Find Below Details</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5>',
+      body: '<h4>Find Below Details</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5><br/><h5>Comments:' + this.regData.comments + '</h5>',
       isHtml: true
     };
  
     this.emailComposer.open(email);
   }
+}
  
 
 }

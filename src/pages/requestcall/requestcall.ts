@@ -5,12 +5,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage } from '../home/home';
 
-/**
- * Generated class for the RequestcallPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -38,6 +33,12 @@ export class RequestcallPage {
 
  
   sendEmail() {
+    if(this.regData.mobile.length < 10)
+    {
+      this.alert('Please Enter 10 Digit Mobile Number');
+      return false;
+    }
+    else{
     let email = {
       to: 'prem.sy89@gmail.com',
       cc: 'drratnakaryadav@gmail.com',
@@ -48,8 +49,6 @@ export class RequestcallPage {
  
     this.emailComposer.open(email);
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VisitorsPage');
   }
 
 }
