@@ -17,9 +17,7 @@ export class LoggedinPage {
  	this.email = fire.auth.currentUser.email;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoggedinPage');
-  }
+ 
 
   logOut(){
     this.fire.auth.signOut();
@@ -70,6 +68,15 @@ close(){
 
   doctor(){
     this.navCtrl.push('DoctorPage');
+  }
+
+  hospital(){
+    this.navCtrl.push('HospitalPage');
+  }
+
+  user(){
+    this.navCtrl.push('UserPage');
+
   }
 
 }
