@@ -10,40 +10,38 @@
 
 <ion-content padding>
   <!-- {{email}} -->
-  <h2>Doctor Provider</h2>
+  <h2>Our Services</h2>
   <ion-grid>
     <ion-row>
-        <ion-col col-6>	<button ion-button  full class="common_btn btn_1" (click)="dignostics()">
-Diagnostics
+        <ion-col col-6>	<button ion-button  full class="common_btn" (click)="dignostics()">
+<span>Diagnostics</span>
         </button></ion-col>
-        <ion-col col-6><button ion-button full class="common_btn btn_1" (click)="uploadPrescription()">
-          Pharmacy
+        <ion-col col-6><button ion-button full class="common_btn" (click)="uploadPrescription()">
+          <span>Pharmacy</span>
         </button></ion-col>
       </ion-row>
       <ion-row>
-          <ion-col col-6>	<button ion-button  full class="common_btn btn_1" (click)="healthCheck()">Health Checks</button></ion-col>
-          <ion-col col-6><button ion-button  full class="common_btn btn_1" (click)="requestCall()">Request a Call</button></ion-col>
+          <ion-col col-6>	<button ion-button  full class="common_btn" (click)="healthCheck()"><span>Health Checks</span></button></ion-col>
+          <ion-col col-6><button ion-button  full class="common_btn" (click)="requestCall()"><span>Request a Call</span></button></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-6>	<button ion-button  full class="common_btn btn_1" (click)="secondOpenion()">Second Openion</button></ion-col>
-          <ion-col col-6><button ion-button  full class="common_btn btn_1" (click)="onlineAppoint()">Online Appointment</button></ion-col>
+          <ion-col col-6>	<button ion-button  full class="common_btn" (click)="secondOpenion()"><span>Second Openion</span></button></ion-col>
+          <ion-col col-6><button ion-button  full class="common_btn" (click)="onlineAppoint()"><span>Online Appointment</span></button></ion-col>
         </ion-row>
         <ion-row>
-            <ion-col col-6>	<button ion-button  full class="common_btn btn_1" (click)="healthCare()">Home<br/>Healthcare</button></ion-col>
-          <ion-col col-6>	<button ion-button  full class="common_btn btn_1" (click)="anyOther()">Any Other Support</button></ion-col>
+            <ion-col col-6>	<button ion-button  full class="common_btn" (click)="healthCare()"><span>Home Healthcare</span></button></ion-col>
+          <ion-col col-6>	<button ion-button  full class="common_btn" (click)="anyOther()"><span>Any Other Support</span></button></ion-col>
           
         </ion-row>
+        <ion-row>
+          <ion-col col-6>	<button ion-button  full class="common_btn" (click)="doctor()"><span>Doctor</span></button></ion-col>
+        <ion-col col-6>	<button ion-button  full class="common_btn" (click)="ourPartner()"><span>Our Partner</span></button></ion-col>
+        
+      </ion-row>
   
  
 </ion-grid>
-<ion-list>
-    <button (click)="doctor()" ion-item>
-      Doctor
-    </button> 
-    <button (click)="ourPartner()" ion-item>
-        Our Partner
-      </button>  
-    </ion-list>
+
 </ion-content>
 <div class="overlay_modal" *ngIf="showmodal">
   <div class="modal_inner">
