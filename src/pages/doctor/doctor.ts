@@ -58,15 +58,13 @@ export class DoctorPage {
       attachments: [
         this.currentImage
       ],
-      subject: 'Details for Visit at Lab',
+      subject: 'Details for Doctor',
       body: '<h4>Find Below Details</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5>',
       isHtml: true
     };
  
     this.emailComposer.open(email);
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VisitorsPage');
-  }
+ 
 
 }

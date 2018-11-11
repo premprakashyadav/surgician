@@ -5,12 +5,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage } from '../home/home';
 
-/**
- * Generated class for the PartnerPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -27,20 +22,7 @@ export class PartnerPage {
     this.fire.auth.signOut();
 	this.navCtrl.setRoot(HomePage);
   }
- 
-  captureImage() {
-    const options: CameraOptions = {
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      destinationType: this.camera.DestinationType.FILE_URI,
-    }
- 
-    this.camera.getPicture(options).then((imageData) => {
-      this.currentImage = imageData;
-    }, (err) => {
-      // Handle error
-      console.log('Image error: ', err);
-    });
-  }
+
 
   alert(message: string) {
     this.alertCtrl.create({
@@ -58,15 +40,13 @@ export class PartnerPage {
       attachments: [
         this.currentImage
       ],
-      subject: 'Details for Visit at Lab',
+      subject: 'Details for Become a Partner',
       body: '<h4>Find Below Details</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5>',
       isHtml: true
     };
  
     this.emailComposer.open(email);
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VisitorsPage');
-  }
+ 
 
 }

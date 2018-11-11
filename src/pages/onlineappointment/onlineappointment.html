@@ -30,15 +30,12 @@
               </ion-item>
               <ion-item>
                   <ion-label>Appointment Date & Time</ion-label>
-                  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="regData.myDate" name="myDate"></ion-datetime>
+                  <ion-datetime displayFormat="DD/MM/YYYY h:mm A" [(ngModel)]="regData.myDate" name="myDate"></ion-datetime>
                 </ion-item>
         <ion-item>
             <ion-input type="text" placeholder="Comments" [(ngModel)]="regData.address" name="address" required></ion-input>
           </ion-item>
-          <ion-item>
-              <button ion-button full color="secondary"  (click)="captureImage()">Upload Prescription</button>
-              <img [src]="currentImage" *ngIf="currentImage" />
-            </ion-item>
+          
             <ion-item>
                 <button ion-button full (click)="sendEmail()" [disabled]="regForm.invalid">Send Email</button>
               </ion-item>

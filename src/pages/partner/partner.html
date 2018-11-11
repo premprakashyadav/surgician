@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Visit at Lab<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+    <ion-title>Become a Partner<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -22,10 +22,7 @@
         <ion-item>
             <ion-input type="text" placeholder="Address" [(ngModel)]="regData.address" name="address" required></ion-input>
           </ion-item>
-          <ion-item>
-              <button ion-button full color="secondary"  (click)="captureImage()">Upload Prescription</button>
-              <img [src]="currentImage" *ngIf="currentImage" />
-            </ion-item>
+        
             <ion-item>
                 <button ion-button full (click)="sendEmail()" [disabled]="regForm.invalid">Send Email</button>
               </ion-item>
@@ -33,27 +30,6 @@
       </ion-list>
     </form>
 
-    <h4>Lab Services:</h4>
-<p>Our team will suggest you nearest area help in appointment.</p> 
-<ion-list>
-  <button ion-item>
-    MRI Scan
-  </button>  
-  <button ion-item>
-    CT Scan
-  </button> 
-  <button ion-item>
-    Ultrasound
-  </button> 
-  <button ion-item>
-    PET-CT
-  </button> 
-  <button ion-item>
-    X-Ray
-  </button> 
-  <button ion-item>
-    Doppler
-  </button> 
-</ion-list>
+   
  
 </ion-content>

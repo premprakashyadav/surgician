@@ -64,9 +64,7 @@ export class HealthcheckPage {
  
     this.emailComposer.open(email);
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VisitorsPage');
-  }
+ 
 
 }
 
