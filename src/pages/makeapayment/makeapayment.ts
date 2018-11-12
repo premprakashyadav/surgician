@@ -11,10 +11,12 @@ import { HomePage } from '../home/home';
   templateUrl: 'makeapayment.html',
 })
 export class MakeapaymentPage {
+  email:any;
   rzp1:any;
     currentImage = null;
     regData = { name:'', mobile: '', address: '', amount: null };
     constructor(private fire: AngularFireAuth,private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
+      this.email = fire.auth.currentUser.email;
     }
    
     logOut(){
@@ -44,13 +46,14 @@ export class MakeapaymentPage {
         var options = {
           description: 'Credits to Surgician.com',
           name:'Surgician.com',
-          image: 'http://www.surgician.com/images/logo.png',
+          image: 'assets/imgs/logo.png',
           currency: 'INR',
           key: 'rzp_live_SbhTbvL3OJNrhK',
           amount: geten,
           prefill: {
             contact: this.regData.mobile,
-            name: this.regData.name
+            name: this.regData.name,
+            email:this.email
           }
          
        
@@ -64,10 +67,11 @@ export class MakeapaymentPage {
       var cancelCallback = function(error) {
         alert(error.description + ' (Error '+error.code+')')
       }
-      this.rzp1.on('payment.success', successCallback)
-      this.rzp1.on('payment.cancel', cancelCallback)
+      
       this.rzp1 = new Razorpay(options);
       this.rzp1.open();
+      this.rzp1.on('payment.success', successCallback)
+      this.rzp1.on('payment.cancel', cancelCallback)
     }
   }
   
