@@ -31,6 +31,7 @@
     "@ionic/storage": "2.2.0",
     "angularfire2": "^5.1.0",
     "com-badrit-base64": "0.2.0",
+    "com.razorpay.cordova": "git+https://github.com/razorpay/razorpay-cordova.git",
     "cordova-android": "^7.1.1",
     "cordova-ios": "4.5.5",
     "cordova-plugin-camera": "4.0.3",
@@ -71,7 +72,8 @@
       },
       "com-badrit-base64": {},
       "cordova-plugin-camera": {},
-      "cordova-plugin-email-composer": {}
+      "cordova-plugin-email-composer": {},
+      "com.razorpay.cordova": {}
     },
     "platforms": [
       "ios",

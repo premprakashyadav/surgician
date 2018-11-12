@@ -88,6 +88,7 @@
     <plugin name="com-badrit-base64" spec="0.2.0" />
     <plugin name="cordova-plugin-email-composer" spec="0.8.15" />
     <plugin name="cordova-plugin-camera" spec="4.0.3" />
+    <plugin name="com.razorpay.cordova" spec="https://github.com/razorpay/razorpay-cordova.git" />
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="^7.1.1" />
 </widget>

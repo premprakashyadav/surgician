@@ -12,6 +12,7 @@ export class LoggedinPage {
 
   email: string;
   showmodal : boolean= false;
+  
 
   constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
  	this.email = fire.auth.currentUser.email;
@@ -79,4 +80,7 @@ close(){
 
   }
 
+  onlinepayment() {
+    this.navCtrl.push('MakeapaymentPage'); 
+}
 }
