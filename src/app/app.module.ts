@@ -14,18 +14,24 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { LoggedinPage } from '../pages/loggedin/loggedin';
 import { RegisterPage } from '../pages/register/register';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ChatService } from "./app.service";
 
 
-
-const firebaseAuth = {
+export const appconfig = {
+  firebase: {
   apiKey: "AIzaSyCKm86zTFd0KOkpcYYyJtG7jTeyzctSlHU",
   authDomain: "com.surgician.surgician",
   databaseURL: "https://surgician-73df1.firebaseio.com",
   projectId: "surgician-73df1",
   storageBucket: "surgician-73df1.appspot.com",
   messagingSenderId: "708292051091"
+  },
+  users_endpoint: "users",
+  chats_endpoint: "chats"
 };
 
 @NgModule({
@@ -39,8 +45,10 @@ const firebaseAuth = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseAuth),
+    AngularFireModule.initializeApp(appconfig),
+    AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     HttpClientModule,
     FormsModule
   ],
@@ -59,7 +67,8 @@ const firebaseAuth = {
     ImagePicker,
     Base64,
     EmailComposer,
-    Camera
+    Camera,
+    ChatService
   ]
 })
 export class AppModule {}

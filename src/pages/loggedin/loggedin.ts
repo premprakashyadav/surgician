@@ -83,4 +83,7 @@ close(){
   onlinepayment() {
     this.navCtrl.push('MakeapaymentPage'); 
 }
+chat(){
+  this.navCtrl.push('ChatPage');  
+}
 }
