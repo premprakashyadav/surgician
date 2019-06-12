@@ -2,36 +2,61 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Welcome to Surgician <ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+    <ion-title>Welcome {{userDetails.username}} <ion-icon name="md-log-out"  (click)="logout()" float-right></ion-icon></ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <!-- {{email}} -->
-  <ion-grid>
+            <a class="chat_button" color="vibrant"   href="javascript:void(Tawk_API.toggle())">
+                <ion-icon name="ios-chatbubbles"></ion-icon>
+              </a>
+          
+      <ion-fab bottom right>
+          <button color="secondary" ion-fab (click)="onlinepayment()">
+              Pay
+          </button>
+        </ion-fab>
+  
+  <ion-grid class="facility">
     <ion-row>
-        <ion-col col-6>	<button ion-button  full class="common_btn" (click)="dignostics()">
-<span>Diagnostics</span>
+        <ion-col col-6>	<button color="primary" ion-button  full class="common_btn" (click)="dignostics()">
+<span class="facility_name">Diagnostics</span>
+<i class="fa fa-flask"></i>
         </button></ion-col>
-        <ion-col col-6><button ion-button full class="common_btn" (click)="uploadPrescription()">
-          <span>Pharmacy</span>
+        <ion-col col-6><button color="secondary" ion-button full class="common_btn" (click)="uploadPrescription()">
+          <span class="facility_name">Pharmacy</span>
+          <i class="fa fa-medkit"></i>
         </button></ion-col>
       </ion-row>
       <ion-row>
-          <ion-col col-6>	<button ion-button  full class="common_btn" (click)="healthCheck()"><span>Health Checks</span></button></ion-col>
-          <ion-col col-6>	<button ion-button  full class="common_btn" (click)="secondOpenion()"><span>Second Openion</span></button></ion-col>
+          <ion-col col-6>	<button color="danger" ion-button  full class="common_btn" (click)="healthCheck()">
+            <span class="facility_name">Health Checks</span>
+            <i class="fa fa-user-md"></i>
+          </button></ion-col>
+          <ion-col col-6>	<button color="purple" ion-button  full class="common_btn" (click)="secondOpenion()">
+            <span class="facility_name">Second Openion</span>
+            <i class="fa fa-tasks"></i>
+          </button></ion-col>
           
         </ion-row>
         <ion-row>
           
-          <ion-col col-6><button ion-button  full class="common_btn" (click)="onlineAppoint()"><span>Online Appointment</span></button></ion-col>
-          <ion-col col-6>	<button ion-button  full class="common_btn" (click)="healthCare()"><span>Home Healthcare</span></button></ion-col>
+          <ion-col col-6><button color="green" ion-button  full class="common_btn" (click)="onlineAppoint()"><span class="facility_name">Online Appointment</span>
+            <i class="fa fa-laptop" aria-hidden="true"></i>
+          </button></ion-col>
+          <ion-col col-6>	<button color="danger" ion-button  full class="common_btn" (click)="healthCare()"><span class="facility_name">Home Healthcare</span>
+            <i class="fa fa-ambulance"></i>
+          </button></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-6><button ion-button  full class="common_btn" (click)="requestCall()"><span>Request a Call</span></button></ion-col>
-          <ion-col col-6>	<button ion-button  full class="common_btn" (click)="anyOther()"><span>Any Other Support</span></button></ion-col>
+          <ion-col col-6><button color="dark" ion-button  full class="common_btn" (click)="requestCall()"><span class="facility_name">Request a Call</span>
+            <i class="fa fa-phone"></i>
+          </button></ion-col>
+          <ion-col col-6>	<button color="yellow" ion-button  full class="common_btn" (click)="anyOther()"><span class="facility_name">Any Other Support</span>
+            <i class="fa fa-envelope"></i>
+          </button></ion-col>
           
         </ion-row>
        
@@ -40,7 +65,7 @@
 </ion-grid>
 <ion-list>
   <button ion-item (click)="doctor()">
-    Doctor
+      Doctor
   </button>  
   <button ion-item (click)="hospital()">
     Hospital
@@ -54,11 +79,10 @@
   <button ion-item (click)="onlinepayment()">
     Online Payment
   </button>
-  <button ion-item (click)="chat()">
-    Chat
-  </button>
+  
   
 </ion-list>
+ 
  
 
 </ion-content>

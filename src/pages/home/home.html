@@ -1,15 +1,16 @@
-<ion-content padding class="welocomebg">
+<ion-content padding class="bg_image">
   <figure>
     <img src="assets/imgs/logo.png"/>
   </figure>
-  <h2>Welcome to Surgician</h2>
-  <p>Get the best quality of diagnostics and medicines at the resonable prices</p>
-  
-  <ion-grid>
-   <ion-row>
-      <ion-col col-6>	<button ion-button (click)="signIn()" full>Sign In</button></ion-col>
-      <ion-col col-6><button ion-button (click)="register()" full color="secondary">Register</button></ion-col>
-    </ion-row>
-  </ion-grid>
+  <h5>NEW TO SURGICIAN?</h5>
+  <div class="new_sec">
+    <h4 (click)="register()">Register you details with Surgician <ion-icon name="ios-arrow-dropright-outline"></ion-icon></h4>
+    <p>and get exciting discount</p>
+  </div>
+
+  <div class="footer_cont">
+    <h6>ALREADY HAVE A SURGICIAN ACCOUNT?</h6>
+    <button ion-button color="light" outline (click)="login()">LOG IN</button>
+  </div>
 
 </ion-content>

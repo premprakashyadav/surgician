@@ -1,33 +1,35 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular'; 
-
-import { LoginPage } from '../login/login';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
+import { LoginPage } from '../login/login';
 
+/**
+ * Generated class for the HomePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
-	@ViewChild('username') uname;
-	@ViewChild('password') password;
-
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  signIn() {
-  	this.navCtrl.push(LoginPage);
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
   }
 
   register() {
-  	this.navCtrl.push(RegisterPage);
+    this.navCtrl.push(RegisterPage);
   }
 
-  uploadPrescription(){
-    
+  login() {
+    this.navCtrl.push(LoginPage);
   }
-
 
 }

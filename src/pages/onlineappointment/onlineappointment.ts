@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { EmailComposer } from '@ionic-native/email-composer';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { HomePage } from '../home/home';
+
 
 
 
@@ -15,12 +14,10 @@ import { HomePage } from '../home/home';
 export class OnlineappointmentPage {
   currentImage = null;
   regData = { name:'', mobile: '', address: '', docname:'', special:'', docno:'', myDate:'' };
-  constructor(private fire: AngularFireAuth,private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
+  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
   }
  
   logOut(){
-    this.fire.auth.signOut();
-	this.navCtrl.setRoot(HomePage);
   }
  
 

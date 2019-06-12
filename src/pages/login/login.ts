@@ -1,53 +1,108 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Component } from '@angular/core';
+import { NavController, AlertController, NavParams, LoadingController } from 'ionic-angular';
+import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { RegisterPage } from '../register/register';
 import { LoggedinPage } from '../loggedin/loggedin';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { Network } from '@ionic-native/network';
 
 
-/**
- * Generated class for the LoginPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html',
+  templateUrl: 'login.html'
 })
 export class LoginPage {
+  public loading: any;
+  public loaderShow : boolean = false;
+  responseData : any;
+  userData = {"username": "","password": ""};
+  showPasswordText= false;
 
-	@ViewChild('username') user;
-	@ViewChild('password') password;
+  constructor(public navCtrl: NavController,
+    private emailComposer: EmailComposer,
+     public authService: AuthService,
+      public navParams: NavParams,
+       public formBuilder: FormBuilder,
+       public alertCtrl: AlertController,
+       public network: Network,
+        public loadingCtrl: LoadingController) {
+   }
 
-  constructor(private alertCtrl: AlertController, private fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
-  }
+  signup(){
+    if(this.userData){
+      if(this.userData.username == '' || this.userData.username == undefined 
+      || this.userData.password == '' || this.userData.password == undefined){
+        let alert = this.alertCtrl.create({
+          title: 'Eror!',
+          subTitle: 'All fields are required.',
+          buttons: ['Ok']
+        });
+        alert.present();
+      }
+      else{
+     
+    if(this.network.type === 'none'){
+      let alert = this.alertCtrl.create({
+        title: 'No Internet Connection',
+        subTitle: 'Please connect internet to start',
+        buttons: ['Ok']
+      });
+      alert.present();
+    }
+    else{
+      this.loaderShow = true;
+      this.authService.postData(this.userData,'login').then(result => {
+      this.loaderShow = false;   
+      this.responseData = result;
+     if(this.responseData.userData){
+      let alert = this.alertCtrl.create({
+        title: 'Welcome to Surgician',
+        subTitle: 'You are successfully logged in Surgician.',
+        buttons: ['Ok']
+      });
+      alert.present();
+     localStorage.setItem('userData', JSON.stringify(this.responseData));
+     this.navCtrl.push(LoggedinPage);
+          
+				  }
+				  else{ 
+            let alert = this.alertCtrl.create({
+              title: 'Welcome to Surgician',
+              subTitle: 'You are not registered.',
+              buttons: ['Ok']
+            });
+            alert.present();
+				  }    
+          }, (err) => {
+            let alert = this.alertCtrl.create({
+              title: 'Error!',
+              subTitle: err,
+              buttons: ['Ok']
+            });
+            alert.present(); 
+            });
+          }
+        }
+        }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+ }
 
-  alert(message: string) {
-    this.alertCtrl.create({
-      title: 'Info!',
-      subTitle: message,
-      buttons: ['OK']
-    }).present();
-  }
 
-  signInUser() {
-    this.fire.auth.signInWithEmailAndPassword(this.user.value, this.password.value)
-    .then( data => {
-      //console.log('got some data', this.fire.auth.currentUser);
-      this.alert('Success! You\'re logged in');
-      this.navCtrl.setRoot( LoggedinPage );
-      // user is logged in
-    })
-    .catch( error => {
-      console.log('got an error', error);
-      this.alert(error.message);
-    })
-  	
-  }
+ emailIn(){
+  let email = {
+    to: 'prem.sy89@gmail.com',
+    cc: 'drratnakaryadav@gmail.com',
+    subject: 'Surgician Support',
+    body: '',
+    isHtml: true
+  };
+  this.emailComposer.open(email);
+ }
 
+
+ register(){
+   //Login page link
+   this.navCtrl.push(RegisterPage);
+ }
 }

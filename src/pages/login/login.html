@@ -1,29 +1,58 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Login
-    </ion-title>
+    <ion-title>Login</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  
-  <ion-list>
+<ion-content padding class="bg_image">
+    <figure>
+        <img src="assets/imgs/logo.png"/>
+      </figure>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
 
-  <ion-item>
-    <ion-label floating>Email</ion-label>
-    <ion-input type="email" #username></ion-input>
-  </ion-item>
+        <ion-item>
+          <button ion-button clear color="light" type="button" item-left>
+              <ion-icon name="ios-contact-outline"></ion-icon>
+            </button>
+          <ion-input type="text" placeholder="Username" [(ngModel)]="userData.username"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label floating>Password</ion-label>
-    <ion-input type="password" #password></ion-input>
-  </ion-item>
-  
-</ion-list>
-
-<div padding>
-  <button block ion-button (click)="signInUser()">Sign In</button>
-</div>
-
+        <ion-item>
+          <button ion-button clear color="light" type="button" item-left>
+              <ion-icon name="ios-lock-outline"></ion-icon>
+            </button>
+            <ion-input type="text" placeholder="Password" [(ngModel)]="userData.password" *ngIf="showPasswordText"></ion-input>
+            <ion-input type="password" placeholder="Password" [(ngModel)]="userData.password" *ngIf="!showPasswordText" ></ion-input>
+            <button ion-button clear color="light" type="button" item-right (click)="showPasswordText = !showPasswordText">
+              <ion-icon name="eye"> </ion-icon>
+            </button>
+        </ion-item>
+        <ion-grid>
+          
+            <ion-row>
+                <ion-col col-7><button class="forgot_pwd" text-left ion-button full color="light" (click)="forgot()" clear><ion-icon name="ios-key-outline"></ion-icon> Forgot Password</button></ion-col>
+              </ion-row>
+            <ion-row>
+              <ion-col>
+                  <button ion-button full color="purple" (click)="register()">Register</button>
+              </ion-col>
+              <ion-col>
+                  <button ion-button full color="secondary" (click)="signup()">Login</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        
+        
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <div class="copyright ion-text-center">
+      <a href="callto:09987087087" class="ion-float-left" ion-button  color="light" clear><ion-icon name="ios-call-outline"></ion-icon></a>
+      <div class="copyright_lbl" color="light">2019 &copy; Surgician</div>
+      <button class="ion-float-right" ion-button  color="light" (click)="emailIn()" clear><ion-icon name="ios-mail-outline"></ion-icon></button> 
+  </div>
 </ion-content>
