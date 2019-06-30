@@ -11,5 +11,6 @@ export const config = {
       userinfo                :  'api/userinfo',
       updateUser              : 'api/user',
       resendOTP               : 'api/resendOTP',
-      getusers                : 'api/getusers'
+      getusers                : 'api/getusers',
+      commmonForm             : 'api/prescriptionForm'
 }

@@ -1,83 +1,62 @@
-
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Health Checkup<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
-  </ion-navbar>
+    <ion-navbar>
+      <ion-title>Health Check<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+    </ion-navbar>
+  
+  </ion-header>
 
-</ion-header>
 
+  <ion-content padding class="bg_image">
+      
+  <ion-card class="login_form">
 
-<ion-content padding>
-    <form  #regForm="ngForm">
+    <ion-card-content>
+   
     <ion-list>
+      <ion-item class="select_box">
+        <ion-label>Health Checkup Services</ion-label>
+        <ion-select [(ngModel)]="checkup" multiple="true" cancelText="Cancel" okText="Okay">
+          <ion-option value="thyroid">Thyroid</ion-option>
+          <ion-option value="diabetics">Diabetics</ion-option>
+          <ion-option value="ultrasound">Ultrasound</ion-option>
+          <ion-option value="cholestrol">Cholestrol</ion-option>
+          <ion-option value="kidney">Kidney</ion-option>
+          <ion-option value="iron">Iron</ion-option>
+          <ion-option value="hemogram">Hemogram</ion-option>
+          <ion-option value="vitamin">Vitamin</ion-option>
+          <ion-option value="testosterone">Testosterone</ion-option>
+          <ion-option value="cardic">Cardic</ion-option>
+          <ion-option value="pancreas">Pancreas</ion-option>
+          <ion-option value="electrolytes">Electrolytes</ion-option>
+          <ion-option value="all">All types of test</ion-option>
+          <ion-option value="any">Any Other</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Address" [(ngModel)]="address" name="address"></ion-input>
+      </ion-item>
+    <ion-item>
+      <ion-textarea placeholder="Write about your health" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="message"></ion-textarea>
+  </ion-item>
+  
+   
+  
+  </ion-list>
+  <button ion-button block (click)="presentActionSheet()"> Attach Report/Prescription</button>
+      <span *ngIf="attachmentImg">Prescription attached</span>
+      <!-- <img *ngIf="attachmentImg" src="{{'data:image/png;base64,' + attachmentImg}}" width="100" (click)="viewImg(attachmentImg)">  -->
+    <button ion-button block (click)="submitOrder()"> Submit</button>
+  
+  </ion-card-content>
+  </ion-card> 
 
-        <ion-item>
-          <ion-input type="text" placeholder="Name" [(ngModel)]="regData.name" name="name" required></ion-input>
-        </ion-item>
-      
-        <ion-item>
-          <ion-input type="number" placeholder="Mobile" [(ngModel)]="regData.mobile" name="mobile" maxLength="10" required></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-input type="text" placeholder="Address" [(ngModel)]="regData.address" name="address" required></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input type="text" placeholder="Comments" [(ngModel)]="regData.comments" name="comments"></ion-input>
-          </ion-item>
-          <ion-item>
-              <button ion-button full color="secondary"  (click)="captureImage()">Upload Prescription</button>
-              <img [src]="currentImage" *ngIf="currentImage" />
-            </ion-item>
-            <ion-item>
-                <button ion-button full (click)="sendEmail()" [disabled]="regForm.invalid">Submit</button>
-              </ion-item>
-      
-      </ion-list>
-    </form>
+  
+   
 
-    <h4>Health Checkup Services:</h4>
-<p>Our team will suggest you nearest area and help in appointment.</p> 
-<ion-list>
-  <button ion-item>
-    Thyroid
-  </button>  
-  <button ion-item>
-    Diabetics
-  </button> 
-  <button ion-item>
-    Ultrasound
-  </button> 
-  <button ion-item>
-    Cholestrol
-  </button> 
-  <button ion-item>
-    Kidney
-  </button> 
-  <button ion-item>
-    Iron
-  </button> 
-  <button ion-item>
-    Hemogram
-  </button> 
-  <button ion-item>
-    Vitamin
-  </button>
-  <button ion-item>
-    Testosterone
-  </button>
-  <button ion-item>
-    Cardic
-  </button>
-  <button ion-item>
-    Pancreas
-  </button>
-  <button ion-item>
-    Electrolytes
-  </button>
-  <button ion-item>
-    All types of test
-  </button>
-</ion-list>
- 
 </ion-content>
+
+
+<div class="custom_loader" *ngIf="loaderShow">
+  <img src="assets/imgs/spinner.gif">
+</div>

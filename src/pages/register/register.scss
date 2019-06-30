@@ -5,6 +5,19 @@ page-register {
     margin: 13px 0;
     display:inline-block;
   }
+  .terms_check{
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+    font-size: 14px;
+    ion-checkbox{
+      display: inline-block;
+      vertical-align: middle;
+      margin-right:5px;
+    }
+    a{
+      color:#FF6153;
+    }
+  }
   .copyright{
     background-color: rgba(0,0,0,0.5);
     position: absolute;
@@ -13,6 +26,7 @@ page-register {
     right:0;
     height:44px;
     text-align: center;
+    z-index: 99;
     
    
     .ion-float-left,.ion-float-right{
@@ -50,7 +64,7 @@ page-register {
     box-shadow: none;
   }
   figure{
-    margin: 45px 5% 20px 5%;
+    margin: 10px 5% 20px 5%;
     text-align: center;
 }
     form {

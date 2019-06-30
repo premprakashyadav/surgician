@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
-import { AuthService } from '../../services/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, App, Nav } from 'ionic-angular';
 import * as $ from 'jquery';
 
 @IonicPage()
@@ -8,24 +7,23 @@ import * as $ from 'jquery';
   selector: 'page-loggedin',
   templateUrl: 'loggedin.html',
 })
-export class LoggedinPage {
+export class LoggedinPage  {
   showmodal: boolean = false;
   rootPage;
   userDetails: any;
+  userName:any = '';
   responseData: any;
 
   userPostData = { "user_id": "", "token": "" };
 
 
-  constructor(public navCtrl: NavController, public app: App, public navParams: NavParams, private auth: AuthService) {
-    const data = JSON.parse(localStorage.getItem('userData'));
-    this.userDetails = data.userData;
-
-    this.userPostData.user_id = this.userDetails.user_id;
-    this.userPostData.token = this.userDetails.token;
-    $('#offline0Field').val(this.userDetails.user_id);
+  constructor(public navCtrl: NavController, public app: App, public navParams: NavParams, public nav: Nav) {
+    
   }
-
+  ionViewDidLoad() {
+    this.userDetails = localStorage.getItem('profileData');
+  this.userName = JSON.parse(this.userDetails).name;
+    }
 
 
   backToWelcome() {
@@ -33,9 +31,15 @@ export class LoggedinPage {
     root.popToRoot();
   }
 
+  orderHistory() {
+    this.navCtrl.push('OrderhistoryPage');
+  }
+
   logout() {
     localStorage.clear();
-    setTimeout(() => this.backToWelcome(), 1000);
+    setTimeout(() => 
+    this.nav.setRoot("LoginPage"),
+     1000);
   }
 
   uploadPrescription() {
@@ -96,7 +100,5 @@ export class LoggedinPage {
   onlinepayment() {
     this.navCtrl.push('MakeapaymentPage');
   }
-  chat() {
-    this.navCtrl.push('ChatpagePage');
-  }
+ 
 }

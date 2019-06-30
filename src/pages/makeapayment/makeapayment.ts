@@ -11,14 +11,21 @@ import { EmailComposer } from '@ionic-native/email-composer';
 export class MakeapaymentPage {
   email:any;
   rzp1:any;
+  userDetails: any;
     currentImage = null;
-    regData = { name:'', mobile: '', address: '', amount: null };
+    regData = { name:'', mobile: '', address: '', email:'', amount: null };
     constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
       //this.email = fire.auth.currentUser.email;
     }
-   
-    logOut(){
+
+    ionViewDidLoad() {
+    this.userDetails = localStorage.getItem('profileData');
+    this.regData.name = JSON.parse(this.userDetails).name;
+    this.regData.mobile = JSON.parse(this.userDetails).phone;
+    this.regData.address = JSON.parse(this.userDetails).address;
+    this.regData.email = JSON.parse(this.userDetails).email;
     }
+    
    
   
   
@@ -49,7 +56,7 @@ export class MakeapaymentPage {
           prefill: {
             contact: this.regData.mobile,
             name: this.regData.name,
-            email:this.email
+            email:this.regData.email
           }
          
        

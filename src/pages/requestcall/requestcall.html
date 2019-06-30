@@ -1,36 +1,39 @@
-
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Requset A Call<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+    <ion-title>Request a call<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-    <h4>We will call you on below details</h4>
-    <form  #regForm="ngForm">
-    <ion-list>
+<ion-content padding class="bg_image">
+   
+<ion-card class="login_form">
 
-        <ion-item>
-          <ion-input type="text" placeholder="Name" [(ngModel)]="regData.name" name="name" required></ion-input>
-        </ion-item>
-      
-        <ion-item>
-          <ion-input type="number" placeholder="Mobile" [(ngModel)]="regData.mobile" name="mobile" maxLength="10" required></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-input type="text" placeholder="Please tell us about your problem" [(ngModel)]="regData.address" name="address" required></ion-input>
-          </ion-item>
-          
-            <ion-item>
-                <button ion-button full (click)="sendEmail()" [disabled]="regForm.invalid">Submit</button>
-              </ion-item>
-      
-      </ion-list>
-    </form>
+  <ion-card-content>
+ 
+  <ion-list>
 
+  
+  <ion-item>
+    <ion-textarea placeholder="Type your number will call you" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="Comment"></ion-textarea>
+</ion-item>
 
+ 
+
+</ion-list>
+<button ion-button block (click)="presentActionSheet()"> Attach Report/Prescription</button>
+    <span *ngIf="attachmentImg">Prescription attached</span>
+    <!-- <img *ngIf="attachmentImg" src="{{'data:image/png;base64,' + attachmentImg}}" width="100" (click)="viewImg(attachmentImg)">  -->
+  <button ion-button block (click)="submitOrder()"> Submit</button>
+
+</ion-card-content>
+</ion-card> 
 
 </ion-content>
+
+
+<div class="custom_loader" *ngIf="loaderShow">
+<img src="assets/imgs/spinner.gif">
+</div>

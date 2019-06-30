@@ -1,8 +1,7 @@
 
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Welcome {{userDetails.username}} <ion-icon name="md-log-out"  (click)="logout()" float-right></ion-icon></ion-title>
+    <ion-title>Welcome {{userName}} <ion-icon name="md-log-out"  (click)="logout()" float-right></ion-icon></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -59,40 +58,39 @@
           </button></ion-col>
           
         </ion-row>
+
+        <ion-row>
+          <ion-col col-6><button color="voilet" ion-button  full class="common_btn" (click)="doctor()"><span class="facility_name">Doctor</span>
+            <i class="fa fa-user-md" aria-hidden="true"></i>
+          </button></ion-col>
+          <ion-col col-6>	<button color="blue" ion-button  full class="common_btn" (click)="hospital()"><span class="facility_name">Hospital</span>
+            <i class="fa fa-hospital-o" aria-hidden="true"></i>
+          </button></ion-col>
+          
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6><button color="lightgreen" ion-button  full class="common_btn" (click)="ourPartner()"><span class="facility_name">Our Partner</span>
+            <i class="fa fa-users" aria-hidden="true"></i>
+          </button></ion-col>
+
+          <!-- <ion-col col-6><button color="lightgreen" ion-button  full class="common_btn" (click)="orderHistory()"><span class="facility_name">Request History</span>
+            <i class="fa fa-history" aria-hidden="true"></i>
+          </button></ion-col> -->
+          
+        </ion-row>
        
   
  
 </ion-grid>
-<ion-list>
-  <button ion-item (click)="doctor()">
-      Doctor
-  </button>  
-  <button ion-item (click)="hospital()">
-    Hospital
-  </button>
-  <button ion-item (click)="user()">
-    User
-  </button>
-  <button ion-item (click)="ourPartner()">
-    Become a Partner
-  </button>
-  <button ion-item (click)="onlinepayment()">
-    Online Payment
-  </button>
-  
-  
-</ion-list>
- 
- 
-
 </ion-content>
 <div class="overlay_modal" *ngIf="showmodal">
   <div class="modal_inner">
       <ion-icon name="ios-close-circle" (click)="close()"></ion-icon>
     <ion-grid>
       <ion-row>
-          <ion-col col-6>	<button ion-button (click)="visitLab()" full>Visit a Lab</button></ion-col>
-          <ion-col col-6><button ion-button (click)="homeService()" full>Home Service</button></ion-col>
+          <ion-col col-6>	<button ion-button (click)="visitLab()">Visit a Lab</button></ion-col>
+          <ion-col col-6><button ion-button (click)="homeService()">Home Service</button></ion-col>
       </ion-row>
     </ion-grid>
   </div>

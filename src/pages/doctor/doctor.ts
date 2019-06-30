@@ -1,7 +1,12 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { Camera, CameraOptions } from '@ionic-native/camera';
-import { EmailComposer } from '@ionic-native/email-composer';
+import { Component ,ViewChild, ElementRef} from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RestServiceProvider } from '../../services/rest-service/rest-service';
+import {config} from '../../shared/config';
+import {ToastProvider} from '../../services/toast/toast';
+import { Network } from '@ionic-native/network';
+import {AlertProvider } from '../../services/alert/alert';
+import {SharedDataProvider} from '../../services/shared-data/shared-data';
+import { ActionSheetController } from 'ionic-angular';
 
 /**
  * Generated class for the DoctorPage page.
@@ -16,58 +21,127 @@ import { EmailComposer } from '@ionic-native/email-composer';
   templateUrl: 'doctor.html',
 })
 export class DoctorPage {
-  currentImage = null;
-  regData = { name:'', mobile: '', address: '', comments:'' };
-  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,private camera: Camera, private emailComposer: EmailComposer) {
-  }
- 
-  logOut(){
-  }
- 
-  captureImage() {
-    const options: CameraOptions = {
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      destinationType: this.camera.DestinationType.FILE_URI,
+  @ViewChild('myInput') myInput: ElementRef;
+  public message = '';
+  public attachmentImg;
+  public loaderShow : boolean = false;
+  public name = '';
+  public address = '';
+  public service = 'Doctor';
+  public checkup = '';
+  public equipment = '';
+  
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public restServiceProvider: RestServiceProvider,
+                public toastProvider : ToastProvider,
+                public network: Network,
+                public alertProvider : AlertProvider,
+                public sharedDataProvider : SharedDataProvider,
+                public actionSheetCtrl: ActionSheetController
+              ) {
     }
- 
-    this.camera.getPicture(options).then((imageData) => {
-      this.currentImage = imageData;
-    }, (err) => {
-      // Handle error
-      console.log('Image error: ', err);
-    });
-  }
-
-  alert(message: string) {
-    this.alertCtrl.create({
-      title: 'Info!',
-      subTitle: message,
-      buttons: ['OK']
-    }).present();
-  }
-
- 
-  sendEmail() {
-    if(this.regData.mobile.length < 10)
-    {
-      this.alert('Please Enter 10 Digit Mobile Number');
-      return false;
+  
+    ionViewDidLoad() {
+    }
+    resize() {
+      var element = this.myInput['_elementRef'].nativeElement.getElementsByClassName("text-input")[0];
+        var scrollHeight = element.scrollHeight;
+        element.style.height = scrollHeight + 'px';
+        this.myInput['_elementRef'].nativeElement.style.height = (scrollHeight + 16) + 'px';
+      }
+  
+      presentActionSheet() {
+        let actionSheet = this.actionSheetCtrl.create({
+          title: 'Modify your album',
+          buttons: [
+            {
+              text: 'Upload from Library',
+              handler: () => {
+                this.openPicker()
+              }
+            },{
+              text: 'Camera',
+              handler: () => {
+                this.opemcam()
+              }
+            },{
+              text: 'Cancel',
+              role: 'cancel',
+              handler: () => {
+                console.log('Cancel clicked');
+              }
+            }
+          ]
+        });
+        actionSheet.present();
+      }
+  
+      submitOrder() {
+    if(this.message && this.name){
+  
+      // if(!this.attachmentImg){
+      //   this.toastProvider.presentToastTop("Attach one refrence image.");
+  
+      // }
+      // else{
+    let postData = {
+      "userID":localStorage.getItem("userID"),
+      "name":this.name,
+      "message":this.message,
+      "address":this.address,
+      "service":this.service,
+      "checkup":this.checkup,
+      "equipment":this.equipment,
+      "upload_files" : this.attachmentImg ? this.attachmentImg : ""
+    }
+    if(this.network.type === 'none'){
+      this.alertProvider.showWithTitle('No Internet Connection', 'Please connect internet to start')
     }
     else{
-    let email = {
-      to: 'prem.sy89@gmail.com',
-      cc: 'drratnakaryadav@gmail.com',
-      attachments: [
-        this.currentImage
-      ],
-      subject: 'Details for Doctor',
-      body: '<h4>Find Below Details</h4><br/>' +'<h5>Name:' + this.regData.name + '</h5><br/><h5>Mobile:' + this.regData.mobile + '</h5><br/><h5>Address:' + this.regData.address + '</h5><br/><h5>Comments:' + this.regData.comments + '</h5>',
-      isHtml: true
-    };
- 
-    this.emailComposer.open(email);
+      this.loaderShow = true;
+        this.restServiceProvider.postService(config['commmonForm'],postData).subscribe(result => {
+          this.loaderShow = false; 
+          if(result.Response.status == 'success'){
+              this.toastProvider.presentToastTop("Request submitted succeefully.");
+              this.message = '';
+              this.name = '';
+              this.attachmentImg = '';
+            }
+            else{ 
+              this.toastProvider.presentToastTop(result.Error.error_msg);
+            }    
+            }, (err) => {
+              this.loaderShow = false; 
+              this.toastProvider.presentToastTop(err)
+              });
+            }
+       //   }
+          }
+   }
+  
+  
+   opemcam()
+   {
+       this.sharedDataProvider.openCamera().then(data =>{
+       console.log("data",data);
+       if(data){
+           this.attachmentImg = data;
+       }
+       })
+   }
+  
+  
+   openPicker(){
+       this.sharedDataProvider.openImagePicker().then(data =>{
+           if(data){
+               this.attachmentImg = data;
+           }
+           })
+   }
+  
+   viewImg(i){
+       this.sharedDataProvider.viewImages('data:image/png;base64,' + i);
+   }
   }
-}
- 
-
-}
+  

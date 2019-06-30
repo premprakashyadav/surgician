@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Order History</ion-title>
+  </ion-navbar>
+  <ion-searchbar
+  [(ngModel)]="myInput"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="filterItems(myInput)"
+  (ionCancel)="onCancel($event)">
+</ion-searchbar>
+</ion-header>
+<ion-content  class="bg_image">
+  <ion-list class="orderhistorylist">
+    <ion-item *ngFor="let o of orderHistoryList">
+      <ion-thumbnail item-start>
+        <img src="{{o.image}}" *ngIf="o.image">
+        <img  *ngIf="!o.image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0SdZAibO1L_gr6cEZUoqK0b3XKLWCOMqxO-QgZX7eQ-EnUJoQMg"/>
+      </ion-thumbnail>
+      <h2 style="color: black">{{o.description}}</h2>
+      <p>{{o.createdon | date : 'dd MMM yyyy @hh:mm'}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<div class="custom_loader" *ngIf="loaderShow">
+  <img src="assets/imgs/spinner.gif">
+</div>

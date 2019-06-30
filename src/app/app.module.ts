@@ -1,32 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
-import { Camera } from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
-import { RegisterPage } from '../pages/register/register';
-import { LoggedinPage } from '../pages/loggedin/loggedin';
-import { HomePage } from '../pages/home/home';
 import { Network } from '@ionic-native/network';
-import { AuthService } from '../services/auth.service';
+
+import { config } from '../shared/config';
+import { IonicStorageModule } from '@ionic/storage';
+import { Crop } from '@ionic-native/crop';
+
+
+//Providers
+import { RestServiceProvider } from '../services/rest-service/rest-service';
+import { ConfigProvider } from '../services/config/config';
+import { SharedDataProvider } from '../services/shared-data/shared-data';
+import { LoadingProvider } from '../services/loading/loading';
+import { AlertProvider } from '../services/alert/alert';
+import { ToastProvider } from '../services/toast/toast';
+import { ProcessHttpmsgProvider } from '../services/process-httpmsg/process-httpmsg';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 @NgModule({
   declarations: [
-    MyApp,
-    LoginPage,
-    HomePage,
-    LoggedinPage,
-    RegisterPage
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -34,28 +42,34 @@ import { AuthService } from '../services/auth.service';
     NgxErrorsModule,
     HttpClientModule,
     HttpModule,
+    IonicStorageModule.forRoot(),
     FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage,
-    LoginPage,
-    LoggedinPage,
-    RegisterPage
+    MyApp
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ImagePicker,
-    Base64,
-    EmailComposer,
-    Camera,
     Network,
-    // ChatService,
-    // AngularFireAuth,
-    AuthService
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: 'config', useValue: config},
+    RestServiceProvider,
+    ConfigProvider,
+    SharedDataProvider,
+    LoadingProvider,
+    AlertProvider,
+    ToastProvider,
+    Camera,
+    ProcessHttpmsgProvider,
+    EmailComposer,
+    ImagePicker,
+    Crop,
+    PhotoViewer,
+    Base64,
+    CallNumber,
+    Keyboard
   ]
 })
 export class AppModule {}
