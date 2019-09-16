@@ -1,0 +1,55 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Home Service<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+  <ion-content padding class="bg_image">
+     
+  <ion-card class="login_form">
+
+    <ion-card-content>
+   
+    <ion-list>
+      <ion-item class="select_box">
+        <ion-label>Home Checkup Services</ion-label>
+        <ion-select [(ngModel)]="checkup" multiple="true" cancelText="Cancel" okText="Okay">
+          <ion-option value="lipid">Lipid Profile</ion-option>
+          <ion-option value="thyroid">Thyroid Profile</ion-option>
+          <ion-option value="hba1c">HbA1C</ion-option>
+          <ion-option value="petct">PET-CT</ion-option>
+          <ion-option value="xray">X-Ray</ion-option>
+          <ion-option value="doppler">Doppler</ion-option>
+          <ion-option value="any">Any Other</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Address" [(ngModel)]="address" name="address"></ion-input>
+      </ion-item>
+    <ion-item>
+      <ion-textarea placeholder="Write about your health" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="message"></ion-textarea>
+  </ion-item>
+  
+   
+  
+  </ion-list>
+  <button ion-button block (click)="presentActionSheet()"> Attach Report/Prescription</button>
+      <span *ngIf="attachmentImg">Prescription attached</span>
+      <!-- <img *ngIf="attachmentImg" src="{{'data:image/png;base64,' + attachmentImg}}" width="100" (click)="viewImg(attachmentImg)">  -->
+    <button ion-button block (click)="submitOrder()"> Submit</button>
+  
+  </ion-card-content>
+  </ion-card>
+  
+   
+   
+
+</ion-content>
+
+
+<div class="custom_loader" *ngIf="loaderShow">
+  <img src="assets/imgs/spinner.gif">
+</div>

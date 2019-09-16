@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Request a call<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg_image">
+   
+<ion-card class="login_form">
+
+  <ion-card-content>
+ 
+  <ion-list>
+
+  
+  <ion-item>
+    <ion-textarea placeholder="Type your number will call you" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="Comment"></ion-textarea>
+</ion-item>
+
+ 
+
+</ion-list>
+<button ion-button block (click)="presentActionSheet()"> Attach Report/Prescription</button>
+    <span *ngIf="attachmentImg">Prescription attached</span>
+    <!-- <img *ngIf="attachmentImg" src="{{'data:image/png;base64,' + attachmentImg}}" width="100" (click)="viewImg(attachmentImg)">  -->
+  <button ion-button block (click)="submitOrder()"> Submit</button>
+
+</ion-card-content>
+</ion-card> 
+
+</ion-content>
+
+
+<div class="custom_loader" *ngIf="loaderShow">
+<img src="assets/imgs/spinner.gif">
+</div>
