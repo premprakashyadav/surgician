@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Become a Partner<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg_image">
+  
+<ion-card class="login_form">
+
+  <ion-card-content>
+ 
+  <ion-list>
+      <ion-item>
+          <ion-input type="text" placeholder="Oragnization Name" [(ngModel)]="name" name="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Person Name" [(ngModel)]="checkup" name="checkup"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Person Contact No." [(ngModel)]="equipment" name="equipment"></ion-input>
+        </ion-item>
+  
+  <ion-item>
+    <ion-textarea placeholder="If any information about your Oragnization" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="message"></ion-textarea>
+</ion-item>
+
+ 
+
+</ion-list>
+<button ion-button block (click)="presentActionSheet()" color="purple" > Attach Documents</button>
+    <span *ngIf="attachmentImg">Documents attached</span>
+    <!-- <img *ngIf="attachmentImg" src="{{'data:image/png;base64,' + attachmentImg}}" width="100" (click)="viewImg(attachmentImg)">  -->
+  <button ion-button block (click)="submitOrder()"> Submit</button>
+
+</ion-card-content>
+</ion-card> 
+
+</ion-content>
+
+
+<div class="custom_loader" *ngIf="loaderShow">
+<img src="assets/imgs/spinner.gif">
+</div>

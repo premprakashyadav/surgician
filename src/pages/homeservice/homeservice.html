@@ -1,0 +1,135 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Home Visit<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+  <ion-content padding class="bg_image">
+     
+  <ion-card class="login_form">
+
+    <ion-card-content>
+   
+    <ion-list>
+      <ion-item class="select_box">
+        <ion-label>Lab Test</ion-label>
+        <ion-select [(ngModel)]="checkup" multiple="true" cancelText="Cancel" okText="Okay">
+          <ion-option value="HEAMOGLOBIN">HEAMOGLOBIN</ion-option>
+        <ion-option value="C.B.C.">C.B.C.</ion-option>
+        <ion-option value="E.S.R.">E.S.R.</ion-option>
+        <ion-option value="Malaria Test (M.P.)">Malaria Test (M.P.)</ion-option>
+        <ion-option value="Blood Group & Rh Factor">Blood Group & Rh Factor</ion-option>
+        <ion-option value="PLATELET COUNT">PLATELET COUNT</ion-option>
+        <ion-option value="G6PD">G6PD</ion-option>
+        <ion-option value="SICKLING TEST">SICKLING TEST</ion-option>
+        <ion-option value="PROTHROMBIN TIME/PTT">PROTHROMBIN TIME/PTT</ion-option>
+        <ion-option value="BLEEDING & CLOTTING TIME">BLEEDING & CLOTTING TIME</ion-option>
+        <ion-option value="BLOOD SUGAR FASTING">BLOOD SUGAR FASTING</ion-option>
+        <ion-option value="BLOOD SUGAR POST LUNCH">BLOOD SUGAR POST LUNCH</ion-option>
+        <ion-option value="BLOOD SUGAR RANDOM">BLOOD SUGAR RANDOM</ion-option>
+        <ion-option value="G.T.T.(4 SAMPLE)">G.T.T.(4 SAMPLE)</ion-option>
+        <ion-option value="BLOOD UREA">BLOOD UREA</ion-option>
+        <ion-option value="BUN">BUN</ion-option>
+        <ion-option value="SERUM CREATININE">SERUM CREATININE</ion-option>
+        <ion-option value="SERUM ELECTROLYTE">SERUM ELECTROLYTE</ion-option>
+        <ion-option value="R.F.T.">R.F.T.</ion-option>
+        <ion-option value="TOTAL PROTEIN">TOTAL PROTEIN</ion-option>
+        <ion-option value="URIC ACID">URIC ACID</ion-option>
+        <ion-option value="ALBUMINE/GLOBUMINE">ALBUMINE/GLOBUMINE</ion-option>
+        <ion-option value="ALKALINE PHOSPHATE">ALKALINE PHOSPHATE</ion-option>
+        <ion-option value="S.G.O.T.">S.G.O.T.</ion-option>
+        <ion-option value="S.G.P.T.">S.G.P.T.</ion-option>
+        <ion-option value="BILIRUBINE">BILIRUBINE</ion-option>
+        <ion-option value="L.F.T.">L.F.T.</ion-option>
+        <ion-option value="C.P.K.-MB">C.P.K.-MB</ion-option>
+        <ion-option value="C.P.K.-TOTAL">C.P.K.-TOTAL</ion-option>
+        <ion-option value="CARDIAC PROFILE">CARDIAC PROFILE</ion-option>
+        <ion-option value="TOTAL CHOLESTEROL">TOTAL CHOLESTEROL</ion-option>
+        <ion-option value="HDL CHOLESTEROL">HDL CHOLESTEROL</ion-option>
+        <ion-option value="TRIGLYCERIDE">TRIGLYCERIDE</ion-option>
+        <ion-option value="LIPID PROFILE">LIPID PROFILE</ion-option>
+        <ion-option value="G.G.T.">G.G.T.</ion-option>
+        <ion-option value="SERUM AMYLASE">SERUM AMYLASE</ion-option>
+        <ion-option value="CALCIUM">CALCIUM</ion-option>
+        <ion-option value="PHOSPHORUS">PHOSPHORUS</ion-option>
+        <ion-option value="MAGNESIUM">MAGNESIUM</ion-option>
+        <ion-option value="IRON & TIBC">IRON & TIBC</ion-option>
+        <ion-option value="R.A. TEST">R.A. TEST</ion-option>
+        <ion-option value="WIDAL TEST">WIDAL TEST</ion-option>
+        <ion-option value="V.D.R.L. TEST">V.D.R.L. TEST</ion-option>
+        <ion-option value="SEMEN ANALYSIS">SEMEN ANALYSIS</ion-option>
+        <ion-option value="HBsAG">HBsAG</ion-option>
+        <ion-option value="HIV">HIV</ion-option>
+        <ion-option value="HCV">HCV</ion-option>
+        <ion-option value="MANTOUX TEST">MANTOUX TEST</ion-option>
+        <ion-option value="COOMB TEST (DIRECT/INDIRECT)">COOMB TEST (DIRECT/INDIRECT)</ion-option>
+        <ion-option value="WESTERN BLOT TEST">WESTERN BLOT TEST</ion-option>
+        <ion-option value="HLA B-27">HLA B-27</ion-option>
+        <ion-option value="Beta HCG">Beta HCG</ion-option>
+        <ion-option value="TROP T">TROP T</ion-option>
+        <ion-option value="T.P.H.A.">T.P.H.A.</ion-option>
+        <ion-option value="T3.T4.TSH">T3.T4.TSH</ion-option>
+        <ion-option value="LH">LH</ion-option>
+        <ion-option value="FSH">FSH</ion-option>
+        <ion-option value="PROLACTINE">PROLACTINE</ion-option>
+        <ion-option value="TOXOPLASMA">TOXOPLASMA</ion-option>
+        <ion-option value="A.S.O. TITRE">A.S.O. TITRE</ion-option>
+        <ion-option value="C REACTIVE PROTEIN (CRP)">C REACTIVE PROTEIN (CRP)</ion-option>
+        <ion-option value="SPUTUM A.F.B.">SPUTUM A.F.B.</ion-option>
+        <ion-option value="DENGUE IgM/ IgG">DENGUE IgM/ IgG</ion-option>
+        <ion-option value="DENGUE NS1">DENGUE NS1</ion-option>
+        <ion-option value="LEPTOSPIRA IgG/ IgM">LEPTOSPIRA IgG/ IgM</ion-option>
+        <ion-option value="MALERIA ANTIGEN">MALERIA ANTIGEN</ion-option>
+        <ion-option value="IGM">IGM</ion-option>
+        <ion-option value="25-OH Vitamin D">25-OH Vitamin D</ion-option>
+        <ion-option value="CA 15.3">CA 15.3</ion-option>
+        <ion-option value="CA 19.9">CA 19.9</ion-option>
+        <ion-option value="CA 125">CA 125</ion-option>
+        <ion-option value="G6PD">G6PD</ion-option>
+        <ion-option value="Hb1AC">Hb1AC</ion-option>
+        <ion-option value="IRON">IRON</ion-option>
+        <ion-option value="Vitamin B 12">Vitamin B 12</ion-option>
+        <ion-option value="URINE ROUTINE">URINE ROUTINE</ion-option>
+        <ion-option value="URINE CULTURE & SENSITIVITY">URINE CULTURE & SENSITIVITY</ion-option>
+        <ion-option value="PREGNANCY TEST">PREGNANCY TEST</ion-option>
+        <ion-option value="URINE SUGAR F/PP">URINE SUGAR F/PP</ion-option>
+        <ion-option value="STOOL ROUTINE">STOOL ROUTINE</ion-option>
+        <ion-option value="STOOL CULTURE & SENSITIVITY">STOOL CULTURE & SENSITIVITY</ion-option>
+        <ion-option value="DIABETIC PROFILE">DIABETIC PROFILE</ion-option>
+        <ion-option value="HYPERTENSION PROFILE">HYPERTENSION PROFILE</ion-option>
+        <ion-option value="INFERTILITY PROFILE">INFERTILITY PROFILE</ion-option>
+        <ion-option value="PREGNANCY PROFILE">PREGNANCY PROFILE</ion-option>
+        <ion-option value="LIFESTYLE PROFILE">LIFESTYLE PROFILE</ion-option>
+        <ion-option value="Others">Others</ion-option>
+      </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Address" [(ngModel)]="address" name="address"></ion-input>
+      </ion-item>
+    <ion-item>
+      <ion-textarea placeholder="Comments if any (Patient's Name, Mobile No, Doctor's Name, Mobile No. & Mention in short patient's problem etc...)" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="message"></ion-textarea>
+  </ion-item>
+  
+   
+  
+  </ion-list>
+  <button ion-button block (click)="presentActionSheet()" color="purple" > Attach Report/Prescription</button>
+      <span *ngIf="attachmentImg">Prescription attached</span>
+      <!-- <img *ngIf="attachmentImg" src="{{'data:image/png;base64,' + attachmentImg}}" width="100" (click)="viewImg(attachmentImg)">  -->
+    <button ion-button block (click)="submitOrder()"> Submit</button>
+  
+  </ion-card-content>
+  </ion-card>
+  
+   
+   
+
+</ion-content>
+
+
+<div class="custom_loader" *ngIf="loaderShow">
+  <img src="assets/imgs/spinner.gif">
+</div>

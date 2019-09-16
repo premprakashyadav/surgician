@@ -1,0 +1,41 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Doctor<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding class="bg_image">
+<ion-card>
+<ion-card-content>
+   
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" placeholder="Patient's Name" [(ngModel)]="name" name="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Patient's Mobile No." [(ngModel)]="checkup" name="checkup"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Consulting Doctor Name" [(ngModel)]="equipment" name="equipment"></ion-input>
+      </ion-item>
+
+    
+    <ion-item>
+      <ion-textarea placeholder="Comments if any (Patient's Name, Mobile No, Doctor's Name, Mobile No. & Mention in short patient's problem etc...)" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="message"></ion-textarea>
+  </ion-item>
+  
+   
+  
+  </ion-list>
+  <button ion-button block (click)="presentActionSheet()" color="purple"> Attach Report/Prescription</button>
+      <span *ngIf="attachmentImg">Prescription attached</span>
+      <!-- <img *ngIf="attachmentImg" src="{{'data:image/png;base64,' + attachmentImg}}" width="100" (click)="viewImg(attachmentImg)">  -->
+    <button ion-button block (click)="submitOrder()"> Submit</button>
+  
+  </ion-card-content>
+  </ion-card> 
+
+</ion-content>
+

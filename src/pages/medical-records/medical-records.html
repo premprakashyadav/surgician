@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Medical Records<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg_image">
+  <ion-card class="login_form">
+
+  <ion-card-content>
+ 
+  <ion-list>
+    
+   
+  <ion-item>
+    <ion-textarea placeholder="Comments if any (Patient's Name, Mobile No, Doctor's Name, Mobile No. & Mention in short patient's problem etc...)" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="message"></ion-textarea>
+</ion-item>
+
+ 
+
+</ion-list>
+
+<button ion-button block (click)="presentActionSheet()" color="purple" > Attach Report/Prescription</button>
+    <span *ngIf="attachmentImg">Prescription attached</span>
+    
+  <button ion-button block (click)="submitOrder()"> Submit</button>
+
+</ion-card-content>
+</ion-card> 
+<!-- 
+<ion-card>
+  <ion-card-content>
+    <ion-card-title>
+      <button ion-button primary (click)="stopRecord()" *ngIf="recording"><ion-icon name="mic-off"></ion-icon>&nbsp;&nbsp;Stop Record</button>
+      <button ion-button primary (click)="startRecord()" *ngIf="!recording"><ion-icon name="mic"></ion-icon>&nbsp;&nbsp;Start Record</button>
+    </ion-card-title>
+  </ion-card-content>
+</ion-card>
+<ion-list>
+  <ion-item *ngFor="let audio of audioList; index as i;">
+    <p>{{audio.filename}}</p>
+    <button ion-button clear item-end large (click)="playAudio(audio.filename, i)"><ion-icon name="play"></ion-icon></button>
+  </ion-item>
+</ion-list> -->
+
+
+
+ 
+
+</ion-content>
+
+
+<div class="custom_loader" *ngIf="loaderShow">
+<img src="assets/imgs/spinner.gif">
+</div>

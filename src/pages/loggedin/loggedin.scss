@@ -1,0 +1,84 @@
+page-loggedin {
+   .common_btn{
+    height: 15vw;
+    border-radius: 5px;
+    position: relative;
+    font-size: 1rem;
+    .facility_name{
+        position: absolute;
+        right:0;
+        left:0;
+        top:9px;
+    }
+    .fa{
+       
+        font-size: 20px;
+        margin-top: 13px;
+    }
+
+   }
+   .chat_button{
+    bottom:10px;
+    position: fixed;
+    z-index:999;
+    left:10px;
+    left:calc(10px + env(safe-area-inset-right));
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+    
+    text-align: center;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    display: block;
+    overflow: hidden;
+    width: 56px;
+    height: 56px;
+    font-size: 14px;
+    line-height: 56px;
+    text-overflow: ellipsis;
+    text-transform: none;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-transition: background-color, opacity 100ms linear;
+    transition: background-color, opacity 100ms linear;
+    background-clip: padding-box;
+    -webkit-font-kerning: none;
+    font-kerning: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    contain: strict;
+    background-color: #663399;
+    font-size: 23px;
+    color:#fff;
+   }
+.overlay_modal{
+    position: fixed;
+    left:0; 
+    right:0;
+    top:0;
+    bottom:0;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 15px;
+    z-index: 9;
+    .modal_inner{
+        position:absolute;
+        top:50%;
+        transform: translateY(-50%);
+        left: 15px;
+        right: 15px;
+        background-color: #fff;
+        padding: 15px;
+        .icon{
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            font-size: 20px;
+            color: #00afef;
+        }
+    }
+}
+}

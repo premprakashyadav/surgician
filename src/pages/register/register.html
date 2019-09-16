@@ -1,0 +1,77 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registration</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg_image">
+  <figure>
+      <img src="assets/imgs/logo.png"/>
+    </figure>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <button ion-button clear color="light" type="button" item-left>
+              <ion-icon name="ios-contact-outline"></ion-icon>
+            </button>
+          <ion-input type="text" placeholder="Name"  [(ngModel)]="regData.name" name="name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <button ion-button clear color="light" type="button" item-left>
+              <ion-icon name="ios-mail-outline"></ion-icon>
+            </button>
+          <ion-input  placeholder="Email" type="email"  [(ngModel)]="regData.email" name="email" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <button ion-button clear color="light" type="button" item-left>
+                <ion-icon name="ios-lock-outline"></ion-icon>
+              </button>
+              <ion-input type="text" placeholder="Password" [(ngModel)]="regData.password" *ngIf="showPasswordText"></ion-input>
+              <ion-input type="password" placeholder="Password" [(ngModel)]="regData.password" *ngIf="!showPasswordText" ></ion-input>
+              <button ion-button clear color="light" type="button" item-right (click)="showPasswordText = !showPasswordText">
+                <ion-icon name="eye"> </ion-icon>
+              </button>
+          </ion-item>
+
+        <ion-item>
+          <button ion-button clear color="light" type="button" item-left>
+              <ion-icon name="ios-contact-outline"></ion-icon>
+            </button>
+          <ion-input type="phone" placeholder="Mobile" [(ngModel)]="regData.phone" name="phone"></ion-input>
+        </ion-item>
+        <ion-grid>
+          <ion-row>
+              <ion-col class="terms_check" col-12>
+          <ion-checkbox color="dark" [(ngModel)]="term"></ion-checkbox>I agree to Surgician App's <a (click)="terms()">Terms and Conditions</a> and <a (click)="terms()">Privacy policy</a>
+        </ion-col>  
+        </ion-row>
+        </ion-grid>
+       
+        <button (click)="doSignup()" ion-button block >Agree and Proceed</button>
+        
+      </ion-list>
+      <ion-grid>
+          <ion-row>
+            <ion-col>
+                <button ion-button full color="secondary" (click)="login()">Login</button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
+<div class="copyright ion-text-center">
+  <a (click)="callJoint('09987087087')" class="ion-float-left" ion-button  color="light" clear><ion-icon name="ios-call-outline"></ion-icon></a>
+  <div class="copyright_lbl" color="light">2019 &copy; Surgician</div>
+  <button class="ion-float-right" ion-button  color="light" (click)="emailIn()" clear><ion-icon name="ios-mail-outline"></ion-icon></button> 
+</div>
+<div class="custom_loader" *ngIf="loaderShow">
+    <img src="assets/imgs/spinner.gif">
+  </div>

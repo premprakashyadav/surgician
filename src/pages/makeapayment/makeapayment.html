@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Online Payment<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg_image">
+    <ion-card class="login_form">
+
+        <ion-card-content>
+    <form  #regForm="ngForm">
+    <ion-list>
+
+        
+        <ion-item>
+          <ion-input type="number" placeholder="Amount" [(ngModel)]="regData.amount" name="amount"  required></ion-input>
+        </ion-item>
+         
+            
+               
+            
+      
+      </ion-list>
+      <button ion-button full (click)="sendEmail()" [disabled]="regForm.invalid">Submit</button>
+    </form>
+    </ion-card-content>
+    </ion-card>
+</ion-content>
