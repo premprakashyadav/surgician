@@ -36,26 +36,55 @@ export class SharedDataProvider {
     });
   }
 
+  // openImagePicker(){
+  //   let options: ImagePickerOptions = { 
+  //     quality: 100,
+  //     width: 600,  
+  //     height: 600, 
+  //     outputType: 1, 
+  //     maximumImagesCount: 15  
+  // };  
+  // this.imagePicker.getPictures(options).then((results) => {  
+  //     for (let index = 0; index < results.length; index++) {  
+  //         //here iam converting image data to base64 data and push a data to array value.  
+  //         this.imageLists.push('data:image/jpeg;base64,' + results[index]);  
+  //     }  
+  //     console.log("Image Lists", this.imageLists);  
+  // }, (error) => {  
+  //     // Handle error   
+  //     console.log("Error occurred while loading", error);  
+  // }); 
+  // }
+
   openImagePicker(){
     const options: ImagePickerOptions = {
       quality: 100,
-      maximumImagesCount: 2,
-      outputType: 0
+      width: 600,  
+      height: 600, 
+      outputType: 1, 
+      maximumImagesCount: 15  
     }
-    var imagepick = this.imagePicker.getPictures(options).then((results) => {
+   return this.imagePicker.getPictures(options).then((results) => {
       for (var i = 0; i < results.length; i++) {
           //this.imgPreview = results[i];
-          return this.base64.encodeFile(results[i]).then((base64File: string) => {
-            this.imageLists.push(base64File);
-          }, (err) => {
-            console.log(err);
-            return err;
-          });
+         // return this.base64.encodeFile(results[i]).then((base64File: string) => {
+            //this.imageLists.push(base64File);
+          // }, (err) => {
+          //   console.log(err);
+          //   return err;
+          // });
+          if(results[i] !== "O" || results[i] !== "K")
+          this.imageLists.push(results[i]); 
+          
       }
-    }, (err) => { });
-    return imagepick;
+      return this.imageLists;
+      //console.log("Image Lists", this.imageLists); 
+    }, (err) => { 
+      console.log("Error occurred while loading", err); 
+    });
   
   };
+
 
   //Crop Image
 cropImg(imgPath){
