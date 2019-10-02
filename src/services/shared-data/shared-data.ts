@@ -10,28 +10,33 @@ import { Base64 } from '@ionic-native/base64';
 export class SharedDataProvider {
   public userEmail;
   public imageLists: any[] = [];
-  constructor(public network: Network, 
-              public camera: Camera,
-              public crop: Crop,
-              public imagePicker: ImagePicker,
-              public photoViewer: PhotoViewer,
-              private base64: Base64) {
+  constructor(public network: Network,
+    public camera: Camera,
+    public crop: Crop,
+    public imagePicker: ImagePicker,
+    public photoViewer: PhotoViewer,
+    private base64: Base64) {
     console.log('Hello SharedDataProvider Provider');
   }
-  CheckInternet(){
-    this.network.onConnect().subscribe(() => {});
+  CheckInternet() {
+    this.network.onConnect().subscribe(() => { });
   }
 
-  openCamera(){
+  openCamera() {
+    this.imageLists = [];
     const options: CameraOptions = {
       quality: 50,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
-  return  this.camera.getPicture(options).then((imageData) => {
-    
-     return this.cropImg(imageData);
+    return this.camera.getPicture(options).then((imageData) => {
+      // for (var i = 0; i < imageData.length; i++) {
+      //   if (imageData[i] !== "O" || imageData[i] !== "K")
+          this.imageLists.push(imageData);
+
+     // }
+      return this.imageLists;
     }, (err) => {
     });
   }
@@ -56,72 +61,73 @@ export class SharedDataProvider {
   // }); 
   // }
 
-  openImagePicker(){
+  openImagePicker() {
+    this.imageLists = [];
     const options: ImagePickerOptions = {
-      quality: 100,
-      width: 600,  
-      height: 600, 
-      outputType: 1, 
-      maximumImagesCount: 15  
+      quality: 75,
+      width: 500,
+      height: 500,
+      outputType: 1,
+      maximumImagesCount: 2
     }
-   return this.imagePicker.getPictures(options).then((results) => {
+    return this.imagePicker.getPictures(options).then((results) => {
       for (var i = 0; i < results.length; i++) {
-          //this.imgPreview = results[i];
-         // return this.base64.encodeFile(results[i]).then((base64File: string) => {
-            //this.imageLists.push(base64File);
-          // }, (err) => {
-          //   console.log(err);
-          //   return err;
-          // });
-          if(results[i] !== "O" || results[i] !== "K")
-          this.imageLists.push(results[i]); 
-          
+        //this.imgPreview = results[i];
+        // return this.base64.encodeFile(results[i]).then((base64File: string) => {
+        //this.imageLists.push(base64File);
+        // }, (err) => {
+        //   console.log(err);
+        //   return err;
+        // });
+        if (results[i] !== "O" || results[i] !== "K")
+          this.imageLists.push(results[i]);
+
       }
       return this.imageLists;
       //console.log("Image Lists", this.imageLists); 
-    }, (err) => { 
-      console.log("Error occurred while loading", err); 
+    }, (err) => {
+      console.log("Error occurred while loading", err);
     });
-  
+
   };
 
 
   //Crop Image
-cropImg(imgPath){
-  let returnPara = {};
-  return this.crop.crop(imgPath).then(newImage => {
-    return  this.base64.encodeFile(newImage).then((base64Img: string) => {
-      let a = base64Img.split(",");
-      return  a[1]
-        });
-    },
-    error =>{
-      return  this.base64.encodeFile(imgPath).then((base64Img) => {
+  cropImg(imgPath) {
+    let returnPara = {};
+    return this.crop.crop(imgPath).then(newImage => {
+      return this.base64.encodeFile(newImage).then((base64Img: string) => {
         let a = base64Img.split(",");
-        return   a[1]
-          });
-    }
-  );
-}
+        return a[1]
+      });
+    },
+      error => {
+        return this.base64.encodeFile(imgPath).then((base64Img) => {
+          let a = base64Img.split(",");
+          return a[1]
+        });
+      }
+    );
+  }
 
-// toBase64(url: string) {
-//   return new Promise<string>(function (resolve) {
-//       var xhr = new XMLHttpRequest();
-//       xhr.responseType = 'blob';
-//       xhr.onload = function () {
-//           var reader = new FileReader();
-//           reader.onloadend = function () {
-//               resolve(reader.result);
-//           }
-//           reader.readAsDataURL(xhr.response);
-//       };
-//       xhr.open('GET', url);
-//       xhr.send();
-//   });
-// }
+  // toBase64(url: string) {
+  //   return new Promise<string>(function (resolve) {
+  //       var xhr = new XMLHttpRequest();
+  //       xhr.responseType = 'blob';
+  //       xhr.onload = function () {
+  //           var reader = new FileReader();
+  //           reader.onloadend = function () {
+  //               resolve(reader.result);
+  //           }
+  //           reader.readAsDataURL(xhr.response);
+  //       };
+  //       xhr.open('GET', url);
+  //       xhr.send();
+  //   });
+  // }
 
 
-viewImages(imgUrl){
-  this.photoViewer.show(imgUrl);
-}
+  viewImages(imgUrl) {
+    this.photoViewer.show(imgUrl);
+  }
 }

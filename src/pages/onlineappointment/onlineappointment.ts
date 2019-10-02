@@ -158,7 +158,7 @@ export class OnlineappointmentPage {
      
   
       submitOrder() {
-    if(this.name && this.checkup && this.appointSound && this.addressSound && this.Comment && this.myDate && this.myTime){
+    if(this.doctorsSound && this.checkup && this.appointSound && this.addressSound  && this.myDate && this.myTime){
   
       // if(!this.attachmentImg){
       //   this.toastProvider.presentToastTop("Attach one refrence image.");

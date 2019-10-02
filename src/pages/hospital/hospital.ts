@@ -138,9 +138,6 @@ export class HospitalPage {
        this.sharedDataProvider.openImagePicker().then((data) =>{
        
            if(data){
-            // var filtered = data.filter((el) => {
-            //   return el != "";
-            // });
                this.attachmentImg = data;
            }
            })
