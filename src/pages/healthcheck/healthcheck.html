@@ -12,6 +12,25 @@
   <ion-card class="login_form">
 
     <ion-card-content>
+        <ion-slides autoplay="3000" pager loop>
+
+            <ion-slide>
+              <img src="assets/imgs/9.jpg"/>
+            </ion-slide>
+          
+            <ion-slide>
+                <img src="assets/imgs/10.jpg"/>
+            </ion-slide>
+          
+            <ion-slide>
+                <img src="assets/imgs/4.jpg"/>
+            </ion-slide>
+  
+            <ion-slide>
+                <img src="assets/imgs/11.jpg"/>
+            </ion-slide>
+          
+          </ion-slides>
    
     <ion-list>
       <ion-item class="select_box">
@@ -39,7 +58,7 @@
         <ion-input type="text" placeholder="Address" [(ngModel)]="address" name="address"></ion-input>
       </ion-item>
     <ion-item>
-      <ion-textarea placeholder="Comments if any (Patient's Name, Mobile No, Doctor's Name, Mobile No. & Mention in short patient's problem etc...)" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="message"></ion-textarea>
+      <ion-textarea placeholder="Comments if any (Patient's Name & Mobile No, Doctor's Name & Mobile No. & Mention in short patient's problem etc...)" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="message"></ion-textarea>
   </ion-item>
   
    
@@ -49,7 +68,9 @@
       <span *ngIf="attachmentImg">Prescription attached</span>
       <!-- <img *ngIf="attachmentImg" src="{{'data:image/png;base64,' + attachmentImg}}" width="100" (click)="viewImg(attachmentImg)">  -->
     <button ion-button block (click)="submitOrder()"> Submit</button>
-  
+    <div class="footer_img">
+        <img src="assets/imgs/15.jpg"/>
+      </div>
   </ion-card-content>
   </ion-card> 
 

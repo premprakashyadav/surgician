@@ -18,7 +18,7 @@ import { ActionSheetController } from 'ionic-angular';
 export class SecondopenionPage {
   @ViewChild('myInput') myInput: ElementRef;
 public Comment;
-public attachmentImg:any = [];
+public attachmentImg:any[];
 public loaderShow : boolean = false;
 
   constructor(public navCtrl: NavController,

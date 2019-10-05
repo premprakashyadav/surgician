@@ -11,7 +11,25 @@
 <ion-card class="login_form">
 
   <ion-card-content>
- 
+      <ion-slides autoplay="3000" pager loop>
+
+          <ion-slide>
+            <img src="assets/imgs/2.jpg"/>
+          </ion-slide>
+        
+          <ion-slide>
+              <img src="assets/imgs/4.jpg"/>
+          </ion-slide>
+        
+          <ion-slide>
+              <img src="assets/imgs/5.jpg"/>
+          </ion-slide>
+
+          <ion-slide>
+              <img src="assets/imgs/8.jpg"/>
+          </ion-slide>
+        
+        </ion-slides>
   <ion-list>
     <ion-item class="select_box">
       <ion-label>Lab Test</ion-label>
@@ -24,6 +42,7 @@
           <ion-option value="O.P.G">O.P.G</ion-option>
           <ion-option value="CT Scan">CT Scan</ion-option>
           <ion-option value="MRI">MRI</ion-option>
+          <ion-option value="PET Scan">PET Scan</ion-option>
           <ion-option value="2D Echo">2D Echo</ion-option>
           <ion-option value="PFT">PFT</ion-option>
           <ion-option value="EEG">EEG</ion-option>
@@ -118,7 +137,7 @@
     </ion-item>
   
   <ion-item>
-    <ion-textarea placeholder="Comments if any (Patient's Name, Mobile No, Doctor's Name, Mobile No. & Mention in short patient's problem etc...)" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="message"></ion-textarea>
+    <ion-textarea placeholder="Comments if any (Patient's Name & Mobile No, Doctor's Name & Mobile No. & Mention in short patient's problem & Lab test etc...)" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"  [(ngModel)]="message"></ion-textarea>
 </ion-item>
 
  
@@ -128,7 +147,9 @@
     <span *ngIf="attachmentImg">Prescription attached</span>
     <!-- <img *ngIf="attachmentImg" src="{{'data:image/png;base64,' + attachmentImg}}" width="100" (click)="viewImg(attachmentImg)">  -->
   <button ion-button block (click)="submitOrder()"> Submit</button>
-
+  <div class="footer_img">
+      <img src="assets/imgs/15.jpg"/>
+    </div>
 </ion-card-content>
 </ion-card> 
 

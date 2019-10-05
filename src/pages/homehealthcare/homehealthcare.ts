@@ -16,7 +16,7 @@ import { ActionSheetController } from 'ionic-angular';
 export class HomehealthcarePage {
   @ViewChild('myInput') myInput: ElementRef;
   public message = '';
-  public attachmentImg:any = [];
+  public attachmentImg:any[];
   public loaderShow : boolean = false;
   public name = '';
   public address = '';
@@ -77,7 +77,7 @@ export class HomehealthcarePage {
       }
   
       submitOrder() {
-    if(this.checkup && this.equipment && this.address){
+    if(this.checkup && this.equipment){
   
       // if(!this.attachmentImg){
       //   this.toastProvider.presentToastTop("Attach one refrence image.");

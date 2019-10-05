@@ -26,7 +26,7 @@ export class OnlineappointmentPage {
   myDate = moment().format();
   myTime = moment().format('LT');
   public Comment;
-  public attachmentImg:any = [];
+  public attachmentImg:any[];
   public loaderShow : boolean = false;
   doctorsSound: String[];
   appointSound: String[];
@@ -39,6 +39,7 @@ export class OnlineappointmentPage {
   public service = 'Online Appointment';
   public checkup = '';
   public equipment = '';
+  public patientMobile = '';
  
   
     constructor(public navCtrl: NavController,
@@ -175,6 +176,7 @@ export class OnlineappointmentPage {
       "appointdate":this.myDate,
       "appointtime":this.myTime,
       "checkup":this.checkup,
+      "patientMobile":this.patientMobile,
       "upload_files" : this.attachmentImg ? this.attachmentImg : ""
     }
     if(this.network.type === 'none'){

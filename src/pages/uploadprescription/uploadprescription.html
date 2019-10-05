@@ -12,7 +12,29 @@
 <ion-card class="login_form">
 
   <ion-card-content>
- 
+      <ion-slides autoplay="3000" pager loop>
+
+          <ion-slide>
+            <img src="assets/imgs/1.jpg"/>
+          </ion-slide>
+        
+          <ion-slide>
+              <img src="assets/imgs/10.jpg"/>
+          </ion-slide>
+        
+          <ion-slide>
+              <img src="assets/imgs/6.jpg"/>
+          </ion-slide>
+
+          <ion-slide>
+              <img src="assets/imgs/16.jpg"/>
+          </ion-slide>
+
+          <ion-slide>
+              <img src="assets/imgs/7.jpg"/>
+          </ion-slide>
+        
+        </ion-slides>
   <ion-list>
 
   
@@ -27,7 +49,9 @@
     <span *ngIf="attachmentImg">Prescription attached</span>
     <!-- <img *ngIf="attachmentImg" src="{{'data:image/png;base64,' + attachmentImg}}" width="100" (click)="viewImg(attachmentImg)">  -->
   <button ion-button block (click)="submitOrder()"> Submit</button>
-
+  <div class="footer_img">
+      <img src="assets/imgs/15.jpg"/>
+    </div>
 </ion-card-content>
 </ion-card> 
 

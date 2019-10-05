@@ -106,8 +106,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', end
 .select_box .label{
   padding-left:10px;
 }
+.login_form{
+  .card-content{
+    padding: 0;
+  }
+}
+.slides{
+  margin: 0 0 10px 0;
+  .swiper-pagination{
+    bottom: -3px!important;
+  }
+}
 
-
+.footer_img{
+  padding: 20px 0;
+}
 
 
 /*!

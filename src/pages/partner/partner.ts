@@ -18,7 +18,7 @@ import { ActionSheetController } from 'ionic-angular';
 export class PartnerPage {
   @ViewChild('myInput') myInput: ElementRef;
   public message = '';
-  public attachmentImg:any = [];
+  public attachmentImg:any[];
   public loaderShow : boolean = false;
   public name;
   public address = '';
