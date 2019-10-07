@@ -23,7 +23,6 @@ export class RegisterPage {
   public showPasswordText= false;
   public regData: any = {};
   public loaderShow : boolean = false;
-  public term = false;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -75,10 +74,6 @@ callJoint(telephoneNumber) {
  }
  
  doSignup() {
-   if(this.term == false)
-   {
-    this.toastProvider.presentToastTop("Please Checked the terms & condition"); 
-   }
     if(this.regData){
      if(this.regData.name == '' || this.regData.name == undefined 
      || this.regData.email == '' || this.regData.email == undefined
