@@ -7,6 +7,8 @@ import { Network } from '@ionic-native/network';
 import {AlertProvider } from '../../services/alert/alert';
 import {SharedDataProvider} from '../../services/shared-data/shared-data';
 import { ActionSheetController } from 'ionic-angular';
+import { IonicSelectableComponent } from 'ionic-selectable';
+import { Port } from '../../types';
 
 @IonicPage()
 @Component({
@@ -16,14 +18,15 @@ import { ActionSheetController } from 'ionic-angular';
 export class VisitorsPage {
   @ViewChild('myInput') myInput: ElementRef;
   public message = '';
-  public attachmentImg:any[];
+  public attachmentImg:any;
   public loaderShow : boolean = false;
   public name = '';
   public address = '';
   public service = 'Lab Checkup';
   public checkup = '';
   public equipment = '';
-  
+  ports: Port[];
+  port: Port;
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public restServiceProvider: RestServiceProvider,
@@ -33,8 +36,111 @@ export class VisitorsPage {
                 public sharedDataProvider : SharedDataProvider,
                 public actionSheetCtrl: ActionSheetController,public nav: Nav
               ) {
+                this.ports = [
+                  { name: "Stress Test" },
+                  { name: "Color Doppler" },
+                  { name: "ECG" },
+                  { name: "Digital X-ray" },
+                  { name: "Digital Mammography" },
+                  { name: "O.P.G" },
+                  { name: "CT Scan" },
+                  { name: "MRI" },
+                  { name: "PET Scan" },
+                  { name: "2D Echo" },
+                  { name: "PFT" },
+                  { name: "EEG" },
+                  { name: "HEAMOGLOBIN" },
+                  { name: "C.B.C." },
+                  { name: "E.S.R." },
+                  { name: "Malaria Test (M.P.)" },
+                  { name: "Blood Group & Rh Factor" },
+                  { name: "PLATELET COUNT" },
+                  { name: "G6PD" },
+                  { name: "SICKLING TEST" },
+                  { name: "PROTHROMBIN TIME/PTT" },
+                  { name: "BLEEDING & CLOTTING TIME" },
+                  { name: "BLOOD SUGAR FASTING" },
+                  { name: "BLOOD SUGAR POST LUNCH" },
+                  { name: "BLOOD SUGAR RANDOM" },
+                  { name: "G.T.T.(4 SAMPLE)" },
+                  { name: "BLOOD UREA" },
+                  { name: "BUN" },
+                  { name: "SERUM CREATININE" },
+                  { name: "SERUM ELECTROLYTE" },
+                  { name: "R.F.T." },
+                  { name: "TOTAL PROTEIN" },
+                  { name: "URIC ACID" },
+                  { name: "ALBUMINE/GLOBUMINE" },
+                  { name: "SERUM ELECTROLYTE" },
+                  { name: "ALKALINE PHOSPHATE" },
+                  { name: "S.G.O.T." },
+                  { name: "S.G.P.T." },
+                  { name: "BILIRUBINE" },
+                  { name: "L.F.T." },
+                  { name: "C.P.K.-MB" },
+                  { name: "C.P.K.-TOTAL" },
+                  { name: "CARDIAC PROFILE" },
+                  { name: "TOTAL CHOLESTEROL" },
+                  { name: "HDL CHOLESTEROL" },
+                  { name: "S.G.P.T." },
+                  { name: "TRIGLYCERIDE" },
+                  { name: "LIPID PROFILE" },
+                  { name: "G.G.T." },
+                  { name: "SERUM AMYLASE" },
+                  { name: "CALCIUM" },
+                  { name: "PHOSPHORUS" },
+                  { name: "MAGNESIUM" },
+                  { name: "IRON & TIBC" },
+                  { name: "R.A. TEST" },
+                  { name: "WIDAL TEST" },
+                  { name: "V.D.R.L. TEST" },
+                  { name: "SEMEN ANALYSIS" },
+                  { name: "HBsAG" },
+                  { name: "HIV" },
+                  { name: "HCV" },
+                  { name: "MANTOUX TEST" },
+                  { name: "COOMB TEST (DIRECT/INDIRECT)" },
+                  { name: "WESTERN BLOT TEST" },
+                  { name: "HLA B-27" },
+                  { name: "Beta HCG" },
+                  { name: "TROP T" },
+                  { name: "T.P.H.A." },
+                  { name: "T3.T4.TSH" },
+                  { name: "LH" },
+                  { name: "FSH" },
+                  { name: "PROLACTINE" },
+                  { name: "TOXOPLASMA" },
+                  { name: "A.S.O. TITRE" },
+                  { name: "C REACTIVE PROTEIN (CRP)" },
+                  { name: "SPUTUM A.F.B." },
+                  { name: "DENGUE IgM/ IgG" },
+                  { name: "DENGUE NS1" },
+                  { name: "LEPTOSPIRA IgG/ IgM" },
+                  { name: "MALERIA ANTIGEN" },
+                  { name: "IGM" },
+                  { name: "25-OH Vitamin D" },
+                  { name: "CA 15.3" },
+                  { name: "CA 19.9" },
+                  { name: "CA 125" },
+                  { name: "G6PD" },
+                  { name: "Hb1AC" },
+                  { name: "IRON" },
+                  { name: "Vitamin B 12" },
+                  { name: "URINE ROUTINE" },
+                  { name: "URINE CULTURE & SENSITIVITY" },
+                  { name: "PREGNANCY TEST" },
+                  { name: "URINE SUGAR F/PP" },
+                  { name: "STOOL ROUTINE" },
+                  { name: "STOOL CULTURE & SENSITIVITY" },
+                  { name: "DIABETIC PROFILE" },
+                  { name: "HYPERTENSION PROFILE" },
+                  { name: "INFERTILITY PROFILE" },
+                  { name: "PREGNANCY PROFILE" },
+                  { name: "Others" }
+                ];
     }
     ionViewDidLoad() {
+     
   } 
   
   logout() {
@@ -75,9 +181,17 @@ export class VisitorsPage {
         });
         actionSheet.present();
       }
+
+      portChange(event: {
+        component: IonicSelectableComponent,
+        value: any
+      }) {
+        this.checkup = event.value;
+        console.log('port:', event.value);
+      };
   
       submitOrder() {
-    if(this.message && this.checkup){
+    if(this.checkup){
   
       // if(!this.attachmentImg){
       //   this.toastProvider.presentToastTop("Attach one refrence image.");
@@ -87,7 +201,7 @@ export class VisitorsPage {
     let postData = {
       "userID":localStorage.getItem("userID"),
       "name":this.name,
-      "message":this.message,
+      "message":this.message?this.message:'No Comment',
       "address":this.address,
       "service":this.service,
       "checkup":JSON.stringify(this.checkup),
@@ -105,7 +219,7 @@ export class VisitorsPage {
               this.toastProvider.presentToastTop("Request submitted succeefully.");
               this.message = '';
               this.checkup = '';
-              this.attachmentImg = [];
+              this.attachmentImg = null;
             }
             else{ 
               this.toastProvider.presentToastTop(result.Error.error_msg);

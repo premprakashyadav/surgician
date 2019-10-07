@@ -27,18 +27,9 @@
   
       <ion-item class="select_box">
         <ion-label>Home Health Care</ion-label>
-        <ion-select [(ngModel)]="checkup" multiple="true" cancelText="Cancel" okText="Okay">
-          <ion-option value="Nurse">Nurse</ion-option>
-          <ion-option value="Female attendant">Female attendant</ion-option>
-          <ion-option value="Male attendant">Male attendant</ion-option>
-          <ion-option value="Physiotherapist">Physiotherapist</ion-option>
-          <ion-option value="Child Care">Child Care</ion-option>
-          <ion-option value="Doctors visit at home">Doctors visit at home</ion-option>
-          <ion-option value="X Ray at home">X Ray at home</ion-option>
-          <ion-option value="Home ICU setup">Home ICU setup</ion-option>
-          <ion-option value="Special Child Care at Home">Special Child Care at Home</ion-option>
-          <ion-option value="Other services">Other services</ion-option>
-        </ion-select>
+        <ionic-selectable item-content [isMultiple]="true" [(ngModel)]="port" [items]="ports" itemValueField="name"
+            itemTextField="name" [canClear]="true" [canSearch]="true" (onChange)="portChange($event)">
+        </ionic-selectable>
       </ion-item>
     
       
@@ -61,7 +52,7 @@
   
   </ion-list>
  
-  <button ion-button block (click)="presentActionSheet()" color="purple" > Attach Report/Prescription</button>
+  <p class="attach_note">If  more than 2 pages attachment, you can email us <b>asknowhelpdesk@gmail.com</b></p><button ion-button block (click)="presentActionSheet()" color="purple" > Attach Report/Prescription</button>
       <span *ngIf="attachmentImg">Prescription attached</span>
       <!-- <img *ngIf="attachmentImg" src="{{'data:image/png;base64,' + attachmentImg}}" width="100" (click)="viewImg(attachmentImg)">  -->
     <button ion-button block (click)="submitOrder()"> Submit</button>

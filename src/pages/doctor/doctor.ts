@@ -112,7 +112,7 @@ export class DoctorPage {
               this.toastProvider.presentToastTop("Request submitted succeefully.");
               this.message = '';
               this.name = '';
-              this.attachmentImg = [];
+              this.attachmentImg = null;
             }
             else{ 
               this.toastProvider.presentToastTop(result.Error.error_msg);

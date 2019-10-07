@@ -18,7 +18,7 @@ import { ActionSheetController } from 'ionic-angular';
 export class AnyotherPage {
   @ViewChild('myInput') myInput: ElementRef;
   public message = '';
-  public attachmentImg: any = [];
+  public attachmentImg: any;
   public loaderShow: boolean = false;
   public name = '';
   public address = '';
@@ -107,7 +107,7 @@ export class AnyotherPage {
             this.toastProvider.presentToastTop("Request submitted succeefully.");
             this.message = '';
             this.name = '';
-            this.attachmentImg = [];
+            this.attachmentImg = null;
           }
           else {
             this.toastProvider.presentToastTop(result.Error.error_msg);

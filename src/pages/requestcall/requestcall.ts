@@ -18,7 +18,7 @@ import { ActionSheetController } from 'ionic-angular';
 export class RequestcallPage {
   @ViewChild('myInput') myInput: ElementRef;
 public Comment;
-public attachmentImg:any[];
+public attachmentImg:any;
 public loaderShow : boolean = false;
 
   constructor(public navCtrl: NavController,
@@ -92,7 +92,7 @@ public loaderShow : boolean = false;
         if(result.Response.status == 'success'){
             this.toastProvider.presentToastTop("Request submitted succeefully.");
             this.Comment = '';
-            this.attachmentImg = [];
+            this.attachmentImg = null;
 				  }
           else{ 
             this.toastProvider.presentToastTop(result.Error.error_msg);

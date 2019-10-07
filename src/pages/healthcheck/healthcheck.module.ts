@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { HealthcheckPage } from './healthcheck';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { HealthcheckPage } from './healthcheck';
   ],
   imports: [
     IonicPageModule.forChild(HealthcheckPage),
+    IonicSelectableModule
   ],
 })
 export class HealthcheckPageModule {}

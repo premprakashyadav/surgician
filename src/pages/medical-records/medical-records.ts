@@ -124,7 +124,7 @@ public equipment = '';
             this.message = '';
             this.name = '';
             this.address = '';
-            this.attachmentImg = [];
+            this.attachmentImg = null;
           }
           else{ 
             this.toastProvider.presentToastTop(result.Error.error_msg);

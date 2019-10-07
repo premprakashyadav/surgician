@@ -37,7 +37,7 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { Media } from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
-
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
     HttpClientModule,
     HttpModule,
     IonicStorageModule.forRoot(),
-    FormsModule
+    FormsModule,
+    IonicSelectableModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
