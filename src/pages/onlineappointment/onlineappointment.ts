@@ -28,7 +28,7 @@ export class OnlineappointmentPage {
   myDate = moment().format();
   myTime = moment().format('LT');
   public Comment;
-  public attachmentImg: any[];
+  public attachmentImg: any;
   public loaderShow: boolean = false;
   doctorsSound: String[];
   appointSound: String[];
@@ -301,7 +301,7 @@ export class OnlineappointmentPage {
       // else{
       let postData = {
         "userID": localStorage.getItem("userID"),
-        "message": this.Comment,
+        "message": this.Comment ? this.Comment : 'No Comment',
         "doctor": this.doctorsSound,
         "address": this.addressSound,
         "appointment": this.appointSound,
@@ -322,7 +322,7 @@ export class OnlineappointmentPage {
           if (result.Response.status == 'success') {
             this.toastProvider.presentToastTop("Request submitted succeefully.");
             this.Comment = '';
-            this.attachmentImg = null;
+            this.attachmentImg = [];
           }
           else {
             this.toastProvider.presentToastTop(result.Error.error_msg);

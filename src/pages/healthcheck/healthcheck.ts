@@ -118,7 +118,7 @@ export class HealthcheckPage {
       let postData = {
         "userID": localStorage.getItem("userID"),
         "name": this.name,
-        "message": this.message,
+        "message": this.message ? this.message : 'No Comment',
         "address": this.address,
         "service": this.service,
         "checkup": JSON.stringify(this.checkup),
@@ -136,7 +136,7 @@ export class HealthcheckPage {
             this.toastProvider.presentToastTop("Request submitted succeefully.");
             this.message = '';
             this.checkup = '';
-            this.attachmentImg = null;
+            this.attachmentImg = [];
           }
           else {
             this.toastProvider.presentToastTop(result.Error.error_msg);

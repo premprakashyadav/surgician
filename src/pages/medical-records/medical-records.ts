@@ -7,11 +7,11 @@ import { File } from '@ionic-native/file';
 
 
 import { RestServiceProvider } from '../../services/rest-service/rest-service';
-import {config} from '../../shared/config';
-import {ToastProvider} from '../../services/toast/toast';
+import { config } from '../../shared/config';
+import { ToastProvider } from '../../services/toast/toast';
 import { Network } from '@ionic-native/network';
-import {AlertProvider } from '../../services/alert/alert';
-import {SharedDataProvider} from '../../services/shared-data/shared-data';
+import { AlertProvider } from '../../services/alert/alert';
+import { SharedDataProvider } from '../../services/shared-data/shared-data';
 import { ActionSheetController } from 'ionic-angular';
 
 
@@ -28,139 +28,138 @@ import { ActionSheetController } from 'ionic-angular';
   templateUrl: 'medical-records.html',
 })
 export class MedicalRecordsPage {
-//   recording: boolean = false;
-// filePath: string;
-// fileName: string;
-// audio: MediaObject;
-// audioList: any[] = [];
+  //   recording: boolean = false;
+  // filePath: string;
+  // fileName: string;
+  // audio: MediaObject;
+  // audioList: any[] = [];
 
-@ViewChild('myInput') myInput: ElementRef;
-public message = '';
-public attachmentImg:any[];
-public loaderShow : boolean = false;
-public name = '';
-public address = '';
-public service = 'Medical Records';
-public checkup = '';
-public equipment = '';
+  @ViewChild('myInput') myInput: ElementRef;
+  public message = '';
+  public attachmentImg: any[];
+  public loaderShow: boolean = false;
+  public name = '';
+  public address = '';
+  public service = 'Medical Records';
+  public checkup = '';
+  public equipment = '';
 
   constructor(private media: Media,
     private file: File,
     public platform: Platform,
     public navCtrl: NavController,
-                public navParams: NavParams,
-                public restServiceProvider: RestServiceProvider,
-                public toastProvider : ToastProvider,
-                public network: Network,
-                public alertProvider : AlertProvider,
-                public sharedDataProvider : SharedDataProvider,
-                public actionSheetCtrl: ActionSheetController,public nav: Nav) {
+    public navParams: NavParams,
+    public restServiceProvider: RestServiceProvider,
+    public toastProvider: ToastProvider,
+    public network: Network,
+    public alertProvider: AlertProvider,
+    public sharedDataProvider: SharedDataProvider,
+    public actionSheetCtrl: ActionSheetController, public nav: Nav) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MedicalRecordsPage');
     // setTimeout(() =>{
-      
+
     //   this.getAudioList();
     // },10000)
   }
 
   resize() {
     var element = this.myInput['_elementRef'].nativeElement.getElementsByClassName("text-input")[0];
-      var scrollHeight = element.scrollHeight;
-      element.style.height = scrollHeight + 'px';
-      this.myInput['_elementRef'].nativeElement.style.height = (scrollHeight + 16) + 'px';
-    }
+    var scrollHeight = element.scrollHeight;
+    element.style.height = scrollHeight + 'px';
+    this.myInput['_elementRef'].nativeElement.style.height = (scrollHeight + 16) + 'px';
+  }
 
-    presentActionSheet() {
-      let actionSheet = this.actionSheetCtrl.create({
-        title: 'Modify your album',
-        buttons: [
-          {
-            text: 'Upload from Library',
-            handler: () => {
-              this.openPicker()
-            }
-          },{
-            text: 'Camera',
-            handler: () => {
-              this.opemcam()
-            }
-          },{
-            text: 'Cancel',
-            role: 'cancel',
-            handler: () => {
-              console.log('Cancel clicked');
-            }
+  presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Modify your album',
+      buttons: [
+        {
+          text: 'Upload from Library',
+          handler: () => {
+            this.openPicker()
           }
-        ]
-      });
-      actionSheet.present();
-    }
-
-    submitOrder() {
-  if(this.message){
-
-    // if(!this.attachmentImg){
-    //   this.toastProvider.presentToastTop("Attach one refrence image.");
-
-    // }
-    // else{
-  let postData = {
-    "userID":localStorage.getItem("userID"),
-    "message":this.message,
-    "service":this.service,
-    "upload_files" : this.attachmentImg ? this.attachmentImg : ""
+        }, {
+          text: 'Camera',
+          handler: () => {
+            this.opemcam()
+          }
+        }, {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
-  if(this.network.type === 'none'){
-    this.alertProvider.showWithTitle('No Internet Connection', 'Please connect internet to start')
-  }
-  else{
-    this.loaderShow = true;
-      this.restServiceProvider.postService(config['commmonForm'],postData).subscribe(result => {
-        this.loaderShow = false; 
-        if(result.Response.status == 'success'){
+
+  submitOrder() {
+    if (this.message) {
+
+      // if(!this.attachmentImg){
+      //   this.toastProvider.presentToastTop("Attach one refrence image.");
+
+      // }
+      // else{
+      let postData = {
+        "userID": localStorage.getItem("userID"),
+        "message": this.message ? this.message : 'No Comment',
+        "service": this.service,
+        "upload_files": this.attachmentImg ? this.attachmentImg : ""
+      }
+      if (this.network.type === 'none') {
+        this.alertProvider.showWithTitle('No Internet Connection', 'Please connect internet to start')
+      }
+      else {
+        this.loaderShow = true;
+        this.restServiceProvider.postService(config['commmonForm'], postData).subscribe(result => {
+          this.loaderShow = false;
+          if (result.Response.status == 'success') {
             this.toastProvider.presentToastTop("Request submitted succeefully.");
             this.message = '';
             this.name = '';
             this.address = '';
-            this.attachmentImg = null;
+            this.attachmentImg = [];
           }
-          else{ 
+          else {
             this.toastProvider.presentToastTop(result.Error.error_msg);
-          }    
-          }, (err) => {
-            this.loaderShow = false; 
-            this.toastProvider.presentToastTop(err)
-            });
           }
-     //   }
-        }
- }
+        }, (err) => {
+          this.loaderShow = false;
+          this.toastProvider.presentToastTop(err)
+        });
+      }
+      //   }
+    }
+  }
 
 
- opemcam()
- {
-     this.sharedDataProvider.openCamera().then(data =>{
-     console.log("data",data);
-     if(data){
-         this.attachmentImg = data;
-     }
-     })
- }
+  opemcam() {
+    this.sharedDataProvider.openCamera().then(data => {
+      console.log("data", data);
+      if (data) {
+        this.attachmentImg = data;
+      }
+    })
+  }
 
 
- openPicker(){
-     this.sharedDataProvider.openImagePicker().then(data =>{
-         if(data){
-             this.attachmentImg = data;
-         }
-         })
- }
+  openPicker() {
+    this.sharedDataProvider.openImagePicker().then(data => {
+      if (data) {
+        this.attachmentImg = data;
+      }
+    })
+  }
 
- viewImg(i){
-     this.sharedDataProvider.viewImages('data:image/png;base64,' + i);
- }
+  viewImg(i) {
+    this.sharedDataProvider.viewImages('data:image/png;base64,' + i);
+  }
 
   // getAudioList() {
   //   if(localStorage.getItem("audiolist")) {
@@ -179,7 +178,7 @@ public equipment = '';
   //     this.filePath = this.file. externalDataDirectory.replace(/file:\/\//g, '') + this.fileName;
   //     // this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Directory exists')).catch(err =>
   //     //   console.log('Directory does not exist'));
-      
+
   //     this.audio = this.media.create(this.filePath);
   //   }
   //   this.audio.startRecord();
@@ -209,8 +208,8 @@ public equipment = '';
 
   logout() {
     localStorage.clear();
-    setTimeout(() => 
-    this.nav.setRoot("LoginPage"),
-     1000);
+    setTimeout(() =>
+      this.nav.setRoot("LoginPage"),
+      1000);
   }
 }

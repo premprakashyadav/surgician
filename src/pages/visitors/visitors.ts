@@ -219,7 +219,7 @@ export class VisitorsPage {
               this.toastProvider.presentToastTop("Request submitted succeefully.");
               this.message = '';
               this.checkup = '';
-              this.attachmentImg = null;
+              this.attachmentImg = [];
             }
             else{ 
               this.toastProvider.presentToastTop(result.Error.error_msg);
