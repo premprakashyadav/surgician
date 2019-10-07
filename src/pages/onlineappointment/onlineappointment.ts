@@ -24,6 +24,7 @@ import { Port } from '../../types';
 })
 export class OnlineappointmentPage {
   @ViewChild('myInput') myInput: ElementRef;
+  @ViewChild('portComponent') portComponent: IonicSelectableComponent;
   //myDate = new Date(new Date().getTime()).toISOString();
   myDate = moment().format();
   myTime = moment().format('LT');
@@ -308,7 +309,7 @@ export class OnlineappointmentPage {
         "service": this.service,
         "appointdate": this.myDate,
         "appointtime": this.myTime,
-        "checkup": this.checkup,
+        "checkup": JSON.stringify(this.checkup),
         "patientMobile": this.patientMobile,
         "upload_files": this.attachmentImg ? this.attachmentImg : ""
       }
@@ -320,9 +321,11 @@ export class OnlineappointmentPage {
         this.restServiceProvider.postService(config['onlineAppoint'], postData).subscribe(result => {
           this.loaderShow = false;
           if (result.Response.status == 'success') {
-            this.toastProvider.presentToastTop("Request submitted succeefully.");
+            this.toastProvider.presentToastTop("Request submitted successfully.");
             this.Comment = '';
-            this.attachmentImg = [];
+            this.checkup = '';
+            this.portComponent.clear();
+            this.attachmentImg = undefined;
           }
           else {
             this.toastProvider.presentToastTop(result.Error.error_msg);
@@ -333,6 +336,8 @@ export class OnlineappointmentPage {
         });
       }
       //   }
+    }  else {
+      this.toastProvider.presentToastTop("Please Fill the Mandatory Fields.");
     }
   }
 

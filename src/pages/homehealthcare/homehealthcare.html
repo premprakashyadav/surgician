@@ -29,7 +29,7 @@
         <ion-item class="select_box">
           <ion-label>Home Health Care</ion-label>
           <ionic-selectable item-content [isMultiple]="true" [(ngModel)]="port" [items]="ports" itemValueField="name"
-            itemTextField="name" [canClear]="true" [canSearch]="true" (onChange)="portChange($event)">
+            itemTextField="name" [canClear]="true" [canSearch]="true" (onChange)="portChange($event)" #portComponent>
           </ionic-selectable>
         </ion-item>
 

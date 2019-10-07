@@ -25,6 +25,7 @@ import { Port } from '../../types';
 })
 export class HomeservicePage {
   @ViewChild('myInput') myInput: ElementRef;
+  @ViewChild('portComponent') portComponent: IonicSelectableComponent;
   public message = '';
   public attachmentImg: any[];
   public loaderShow: boolean = false;
@@ -133,7 +134,6 @@ export class HomeservicePage {
       { name: "HYPERTENSION PROFILE" },
       { name: "INFERTILITY PROFILE" },
       { name: "PREGNANCY PROFILE" },
-      { name: "AMBULANCE SERVICE" },
       { name: "Others" }
     ];
   }
@@ -213,10 +213,11 @@ export class HomeservicePage {
         this.restServiceProvider.postService(config['commmonForm'], postData).subscribe(result => {
           this.loaderShow = false;
           if (result.Response.status == 'success') {
-            this.toastProvider.presentToastTop("Request submitted succeefully.");
+            this.toastProvider.presentToastTop("Request submitted successfully.");
             this.message = '';
             this.checkup = '';
-            this.attachmentImg = [];
+            this.portComponent.clear();
+            this.attachmentImg = undefined;
           }
           else {
             this.toastProvider.presentToastTop(result.Error.error_msg);
@@ -227,6 +228,8 @@ export class HomeservicePage {
         });
       }
       //   }
+    } else {
+      this.toastProvider.presentToastTop("Please Fill the Mandatory Fields.");
     }
   }
 

@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, Platform, Nav } from 'ionic-angula
 // import { File } from '@ionic-native/file/ngx';
 import { Media, MediaObject } from '@ionic-native/media';
 import { File } from '@ionic-native/file';
+import { IonicSelectableComponent } from 'ionic-selectable';
 
 
 import { RestServiceProvider } from '../../services/rest-service/rest-service';
@@ -108,8 +109,12 @@ export class MedicalRecordsPage {
       // else{
       let postData = {
         "userID": localStorage.getItem("userID"),
+        "name": this.name,
         "message": this.message ? this.message : 'No Comment',
+        "address": this.address,
         "service": this.service,
+        "checkup": this.checkup,
+        "equipment": this.equipment,
         "upload_files": this.attachmentImg ? this.attachmentImg : ""
       }
       if (this.network.type === 'none') {
@@ -120,11 +125,11 @@ export class MedicalRecordsPage {
         this.restServiceProvider.postService(config['commmonForm'], postData).subscribe(result => {
           this.loaderShow = false;
           if (result.Response.status == 'success') {
-            this.toastProvider.presentToastTop("Request submitted succeefully.");
+            this.toastProvider.presentToastTop("Request submitted successfully.");
             this.message = '';
             this.name = '';
             this.address = '';
-            this.attachmentImg = [];
+            this.attachmentImg = undefined;
           }
           else {
             this.toastProvider.presentToastTop(result.Error.error_msg);
@@ -135,6 +140,8 @@ export class MedicalRecordsPage {
         });
       }
       //   }
+    }  else {
+      this.toastProvider.presentToastTop("Please Fill the Mandatory Fields.");
     }
   }
 

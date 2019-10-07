@@ -90,9 +90,9 @@ export class RequestcallPage {
         this.restServiceProvider.postService(config['placeOrder'], postData).subscribe(result => {
           this.loaderShow = false;
           if (result.Response.status == 'success') {
-            this.toastProvider.presentToastTop("Request submitted succeefully.");
+            this.toastProvider.presentToastTop("Request submitted successfully.");
             this.Comment = '';
-            this.attachmentImg = [];
+            this.attachmentImg = undefined;
           }
           else {
             this.toastProvider.presentToastTop(result.Error.error_msg);

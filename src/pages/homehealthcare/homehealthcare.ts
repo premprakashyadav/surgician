@@ -17,6 +17,7 @@ import { Port } from '../../types';
 })
 export class HomehealthcarePage {
   @ViewChild('myInput') myInput: ElementRef;
+  @ViewChild('portComponent') portComponent: IonicSelectableComponent;
   public message = '';
   public attachmentImg: any[];
   public loaderShow: boolean = false;
@@ -48,6 +49,7 @@ export class HomehealthcarePage {
       { name: "X Ray at home" },
       { name: "Home ICU setup" },
       { name: "Special Child Care at Home" },
+      { name: "AMBULANCE SERVICE" },
       { name: "Other services" }];
   }
   ionViewDidLoad() {
@@ -125,11 +127,12 @@ export class HomehealthcarePage {
         this.restServiceProvider.postService(config['commmonForm'], postData).subscribe(result => {
           this.loaderShow = false;
           if (result.Response.status == 'success') {
-            this.toastProvider.presentToastTop("Request submitted succeefully.");
+            this.toastProvider.presentToastTop("Request submitted successfully.");
             this.message = '';
             this.equipment = '';
             this.checkup = '';
-            this.attachmentImg = [];
+            this.portComponent.clear();
+            this.attachmentImg = undefined;
           }
           else {
             this.toastProvider.presentToastTop(result.Error.error_msg);
@@ -140,6 +143,8 @@ export class HomehealthcarePage {
         });
       }
       //   }
+    } else {
+      this.toastProvider.presentToastTop("Please Fill the Mandatory Fields.");
     }
   }
 
