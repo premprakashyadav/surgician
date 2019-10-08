@@ -223,7 +223,10 @@ export class VisitorsPage {
           if(result.Response.status == 'success'){
               this.toastProvider.presentToastTop("Request submitted successfully.");
               this.message = '';
+              this.name = '';
+              this.address = '';
               this.checkup = '';
+              this.equipment = '';
               this.portComponent.clear();
               this.attachmentImg = undefined;
             }
@@ -246,7 +249,7 @@ export class VisitorsPage {
    {
        this.sharedDataProvider.openCamera().then(data =>{
        console.log("data",data);
-       if(data){
+       if (data && data.length > 0) {
            this.attachmentImg = data;
        }
        })
@@ -255,7 +258,7 @@ export class VisitorsPage {
   
    openPicker(){
        this.sharedDataProvider.openImagePicker().then(data =>{
-           if(data){
+           if (data && data.length > 0) {
                this.attachmentImg = data;
            }
            })

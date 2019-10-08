@@ -323,9 +323,17 @@ export class OnlineappointmentPage {
           if (result.Response.status == 'success') {
             this.toastProvider.presentToastTop("Request submitted successfully.");
             this.Comment = '';
+            this.doctorsSound = [];
+            this.appointSound = [];
+            this.addressSound = [];
+            this.equipment = '';
             this.checkup = '';
+            this.patientMobile = '';
+            this.myDate = '',
+            this.myTime = '';
             this.portComponent.clear();
             this.attachmentImg = undefined;
+            $('.timeAppoint .datetime .datetime-placeholder').text('');
           }
           else {
             this.toastProvider.presentToastTop(result.Error.error_msg);
@@ -345,7 +353,7 @@ export class OnlineappointmentPage {
   opemcam() {
     this.sharedDataProvider.openCamera().then(data => {
       console.log("data", data);
-      if (data) {
+      if (data && data.length > 0) {
         this.attachmentImg = data;
       }
     })
@@ -354,7 +362,7 @@ export class OnlineappointmentPage {
 
   openPicker() {
     this.sharedDataProvider.openImagePicker().then(data => {
-      if (data) {
+      if (data && data.length > 0) {
         this.attachmentImg = data;
       }
     })

@@ -112,6 +112,9 @@ export class DoctorPage {
             this.toastProvider.presentToastTop("Request submitted successfully.");
             this.message = '';
             this.name = '';
+            this.address = '';
+            this.checkup = '';
+            this.equipment = '';
             this.attachmentImg = undefined;
           }
           else {
@@ -123,6 +126,8 @@ export class DoctorPage {
         });
       }
       //   }
+    }  else {
+      this.toastProvider.presentToastTop("Please Fill the Mandatory Fields.");
     }
   }
 
@@ -130,7 +135,7 @@ export class DoctorPage {
   opemcam() {
     this.sharedDataProvider.openCamera().then(data => {
       console.log("data", data);
-      if (data) {
+      if (data && data.length > 0) {
         this.attachmentImg = data;
       }
     })
@@ -139,7 +144,7 @@ export class DoctorPage {
 
   openPicker() {
     this.sharedDataProvider.openImagePicker().then(data => {
-      if (data) {
+      if (data && data.length > 0) {
         this.attachmentImg = data;
       }
     })

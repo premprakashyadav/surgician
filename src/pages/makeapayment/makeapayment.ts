@@ -25,7 +25,7 @@ export class MakeapaymentPage {
       this.regData.mobile = JSON.parse(this.userDetails).phone;
       this.regData.address = JSON.parse(this.userDetails).address;
       this.regData.email = JSON.parse(this.userDetails).email;
-    }, 4000);
+    }, 1000);
   }
 
 
@@ -50,7 +50,7 @@ export class MakeapaymentPage {
       var options = {
         description: 'Credits to Surgician.com',
         name: 'Surgician.com',
-        image: 'assets/imgs/logo.png',
+        //image: 'assets/imgs/logo.png',
         currency: 'INR',
         key: 'rzp_live_SbhTbvL3OJNrhK',
         amount: geten,
@@ -69,33 +69,22 @@ export class MakeapaymentPage {
       }
 
       var successCallback = (payment_id) => {
-        alert('payment_id: ' + payment_id);
+        this.alert('Payment done successfully and transaction id:' + payment_id);
+        this.regData.amount = null;
         //Navigate to another page using the nav controller
         //this.navCtrl.setRoot(SuccessPage)
         //Inject the necessary controller to the constructor
       };
 
       var cancelCallback = (error) => {
-        alert(error.description + ' (Error ' + error.code + ')');
+        this.alert('Payment not done successfully and error are:' + error.description + ' (Error ' + error.code + ')' );
+        this.regData.amount = null;
         //Navigate to another page using the nav controller
         //this.navCtrl.setRoot(ErrorPage)
       };
 
       RazorpayCheckout.open(options, successCallback, cancelCallback);
-      // var successCallback = function(success) {
-      //   alert('payment_id: ' + success.razorpay_payment_id)
-      //   var orderId = success.razorpay_order_id
-      //   var signature = success.razorpay_signature
-      // }
-
-      // var cancelCallback = function(error) {
-      //   alert(error.description + ' (Error '+error.code+')')
-      // }
-
-      // this.rzp1 = new Razorpay(options);
-      // this.rzp1.open();
-      // this.rzp1.on('payment.success', successCallback)
-      // this.rzp1.on('payment.cancel', cancelCallback)
+      
     }
   }
 

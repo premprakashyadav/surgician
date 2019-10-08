@@ -9,7 +9,7 @@ import { Base64 } from '@ionic-native/base64';
 @Injectable()
 export class SharedDataProvider {
   public userEmail;
-  public imageLists: any[] = [];
+  public imageLists: any[];
   constructor(public network: Network,
     public camera: Camera,
     public crop: Crop,
@@ -79,7 +79,7 @@ export class SharedDataProvider {
         //   console.log(err);
         //   return err;
         // });
-        if (results[i] !== "O" || results[i] !== "K")
+        if (results !== "OK")
           this.imageLists.push(results[i]);
 
       }

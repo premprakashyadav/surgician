@@ -107,6 +107,9 @@ export class AnyotherPage {
             this.toastProvider.presentToastTop("Request submitted successfully.");
             this.message = '';
             this.name = '';
+            this.address = '';
+            this.checkup = '';
+            this.equipment = '';
             this.attachmentImg = undefined;
           }
           else {
@@ -118,6 +121,8 @@ export class AnyotherPage {
         });
       }
       //   }
+    }  else {
+      this.toastProvider.presentToastTop("Please Fill the Mandatory Fields.");
     }
   }
 
@@ -125,7 +130,7 @@ export class AnyotherPage {
   opemcam() {
     this.sharedDataProvider.openCamera().then(data => {
       console.log("data", data);
-      if (data) {
+      if (data && data.length > 0) {
         this.attachmentImg = data;
       }
     })
@@ -134,7 +139,7 @@ export class AnyotherPage {
 
   openPicker() {
     this.sharedDataProvider.openImagePicker().then(data => {
-      if (data) {
+      if (data && data.length > 0) {
         this.attachmentImg = data;
       }
     })

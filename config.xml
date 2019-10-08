@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.surgician.surgician" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Surgician</name>
-    <description>Surgician is awesome app.</description>
-    <author email="emeditechnology@gmail.com" href="http://surgician.com/">Dr. Ratnakar yadav</author>
+    <name>Surgician - No.1 app for doctor's appointment, consultations, order medicine &amp; lab tests</name>
+    <description>Surgician - Doctor's appointment, Consult Online, Order medicine &amp; lab tests.</description>
+    <author email="asknowhelpdesk@gmail.com" href="http://surgician.com/">Dr. R.R. Yadav</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

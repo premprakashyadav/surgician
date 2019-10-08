@@ -110,6 +110,8 @@ export class SecondopenionPage {
         });
       }
       //   }
+    } else {
+      this.toastProvider.presentToastTop("Please Fill the Mandatory Fields.");
     }
   }
 
@@ -117,7 +119,7 @@ export class SecondopenionPage {
   opemcam() {
     this.sharedDataProvider.openCamera().then(data => {
       console.log("data", data);
-      if (data) {
+      if (data && data.length > 0) {
         this.attachmentImg = data;
       }
     })
@@ -126,7 +128,7 @@ export class SecondopenionPage {
 
   openPicker() {
     this.sharedDataProvider.openImagePicker().then(data => {
-      if (data) {
+      if (data && data.length > 0) {
         this.attachmentImg = data;
       }
     })
