@@ -1,8 +1,8 @@
 {
   "name": "surgician",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "version": "0.0.3",
+  "author": "Surgician",
+  "homepage": "https://surgician.com/",
   "private": true,
   "scripts": {
     "start": "ionic-app-scripts serve",
@@ -43,8 +43,8 @@
     "com-badrit-base64": "0.2.0",
     "com-sarriaroman-photoviewer": "1.2.2",
     "com.razorpay.cordova": "git+https://github.com/razorpay/razorpay-cordova.git",
-    "cordova-android": "^7.1.4",
-    "cordova-ios": "5.0.1",
+    "cordova-android": "^8.1.0",
+    "cordova-ios": "^5.0.1",
     "cordova-plugin-camera": "4.0.3",
     "cordova-plugin-crop": "0.4.0",
     "cordova-plugin-device": "^2.0.2",
@@ -85,7 +85,7 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {
-        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "28.+"
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-telerik-imagepicker": {

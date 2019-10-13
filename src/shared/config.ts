@@ -1,5 +1,5 @@
 export const config = {
-      baseURL                 : 'http://surgician.com/lumen/public/',
+      baseURL                 : 'https://surgician.com/lumen/public/',
       register                : 'api/register',
       login                   : 'api/login',
       verifyOTP               : 'api/verifyOTP',

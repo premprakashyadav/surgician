@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.surgician.surgician" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Surgician - No.1 app for doctor's appointment, consultations, order medicine &amp; lab tests</name>
+<widget id="com.surgician.surgician" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Surgician - app for doctor's appointment, consultations, order medicine &amp; lab tests</name>
     <description>Surgician - Doctor's appointment, Consult Online, Order medicine &amp; lab tests.</description>
-    <author email="asknowhelpdesk@gmail.com" href="http://surgician.com/">Dr. R.R. Yadav</author>
+    <author email="asknowhelpdesk@gmail.com" href="http://surgician.com/">Surgician</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -90,5 +90,5 @@
     <plugin name="cordova-plugin-email-composer" spec="0.8.15" />
     <plugin name="cordova-plugin-camera" spec="4.0.3" />
     <plugin name="com.razorpay.cordova" spec="https://github.com/razorpay/razorpay-cordova.git" />
-    <engine name="android" spec="^7.1.1" />
+    <engine name="android" spec="^8.1.0" />
 </widget>
