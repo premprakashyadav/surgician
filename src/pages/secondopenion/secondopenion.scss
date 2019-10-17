@@ -74,6 +74,26 @@ page-secondopenion {
               border:2px solid #f4f4f4;
               margin: 0 0 10px 0;
               padding-left:0;
+              ion-textarea{
+                padding-bottom: 21px;
+                min-height: 180px;
+                .text-input-md{
+                  padding-bottom: 21px;
+                 margin: 13px 8px 21px 8px;
+              }
+             
+                &:after{
+                  position: absolute;
+                  content: '*Not sure Dial below helpdesk No.';
+                  bottom: 5px;
+                  left: 11px;
+                  color: red;
+                  font-size: 13px;
+                  font-weight: bold;
+                  letter-spacing: 0.5px;
+                
+              }
+              }
               button{
                 font-size: 1.8rem;
               }

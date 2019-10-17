@@ -41,16 +41,27 @@ export class HomehealthcarePage {
 
     this.ports = [
       { name: "Nurse" },
-      { name: "Female attendant" },
-      { name: "Male attendant" },
-      { name: "Physiotherapist" },
+      { name: "Female Attendant" },
+      { name: "Male Attendant" },
+      { name: "Physiotherapy at Home" },
       { name: "Child Care" },
-      { name: "Doctors visit at home" },
-      { name: "X Ray at home" },
-      { name: "Home ICU setup" },
+      { name: "Doctors Visit at Home" },
+      { name: "X Ray at Home" },
+      { name: "Home ICU Setup" },
       { name: "Special Child Care at Home" },
-      { name: "AMBULANCE SERVICE" },
-      { name: "Other services" }];
+      { name: "Ambulance Service" },
+      { name: "NRI Home Care" },
+      { name: "Elderly Care Services" },
+      { name: "Home NICU/PICU Setup" },
+      { name: "Wardboy Services" },
+      { name: "Home Chemotherapy" },
+      { name: "Bed Ridden Care" },
+      { name: "Post Hospitalisation Care" },
+      { name: "Post Surgery Care" },
+      { name: "Cancer/Stroke/Cardic Care" },
+      { name: "Yoga at home" },
+      { name: "Fitness Trainer at home" },
+      { name: "Other Services" }];
   }
   ionViewDidLoad() {
   }

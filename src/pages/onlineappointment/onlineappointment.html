@@ -54,7 +54,7 @@
 
         </ion-item>
         <ion-item>
-          <ion-input clearInput placeholder="Hospital/Clinic address" type="text" [(ngModel)]="addressSound"
+          <ion-input clearInput placeholder="Hospital/Clinic name & address" type="text" [(ngModel)]="addressSound"
             name="addresssound"></ion-input>
 
           <button ion-button clear color="light" type="button" (click)="startAddressListening()" item-right>
@@ -78,7 +78,7 @@
         </ion-item>
         <ion-item>
           <ion-textarea
-            placeholder="Comments if any (Patient's Name & Mobile No, Doctor's Name & Mobile No. & Mention in short patient's problem etc...)"
+            placeholder="Help us if describe more (Consulting doctor's or his/her assistant name & mobile No. also Mention in short patient's problem etc...)"
             #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()" [(ngModel)]="Comment"></ion-textarea>
         </ion-item>
 

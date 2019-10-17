@@ -123,7 +123,7 @@ export class HomeservicePage {
       { name: "G6PD" },
       { name: "Hb1AC" },
       { name: "IRON" },
-      { name: "Vitamin B 12" },
+      { name: "VITAMIN B 12" },
       { name: "URINE ROUTINE" },
       { name: "URINE CULTURE & SENSITIVITY" },
       { name: "PREGNANCY TEST" },
@@ -134,7 +134,10 @@ export class HomeservicePage {
       { name: "HYPERTENSION PROFILE" },
       { name: "INFERTILITY PROFILE" },
       { name: "PREGNANCY PROFILE" },
-      { name: "Others" }
+      { name: "TROP I" },
+      { name: "LIPOPROTEIN - A" },
+      { name: "CRP - HS" },
+      { name: "OTHERS" }
     ];
   }
   ionViewDidLoad() {

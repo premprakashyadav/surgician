@@ -15,14 +15,20 @@ import { ActionSheetController } from 'ionic-angular';
 })
 export class HospitalPage {
   @ViewChild('myInput') myInput: ElementRef;
-  public message = '';
-  public attachmentImg: any[];
   public loaderShow: boolean = false;
+  public Comment;
+  public attachmentImg: any;
+  public doctorsSound = '';
+  public appointSound = '';
+  public addressSound = '';
   public name = '';
   public address = '';
   public service = 'Hospital';
   public checkup = '';
   public equipment = '';
+  public patientMobile:any;
+  public myDate = '';
+  public myTime = '';
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -77,34 +83,42 @@ export class HospitalPage {
   }
 
   submitOrder() {
-    if (this.name && this.address) {
+    if (this.doctorsSound && this.appointSound && this.addressSound && this.addressSound) {
 
       // if(!this.attachmentImg){
       //   this.toastProvider.presentToastTop("Attach one refrence image.");
 
       // }
       // else{
-      let postData = {
-        "userID": localStorage.getItem("userID"),
-        "name": this.name,
-        "message": this.message ? this.message : 'No Comment',
-        "address": this.address,
-        "service": this.service,
-        "checkup": this.checkup,
-        "equipment": this.equipment,
-        "upload_files": this.attachmentImg ? this.attachmentImg : ""
-      }
+        let postData = {
+          "userID": localStorage.getItem("userID"),
+          "service": this.service,
+          "doctor": this.doctorsSound,
+          "appointment": this.appointSound,
+          "address": this.addressSound,
+          "checkup": this.checkup,
+          "appointdate": this.myDate,
+          "appointtime": this.myTime,
+          "message": this.Comment ? this.Comment : 'No Comment',
+          "patientMobile": this.patientMobile,
+          "upload_files": this.attachmentImg ? this.attachmentImg : ""
+        };
       console.log(postData);
       if (this.network.type === 'none') {
         this.alertProvider.showWithTitle('No Internet Connection', 'Please connect internet to start')
       }
       else {
         this.loaderShow = true;
-        this.restServiceProvider.postService(config['commmonForm'], postData).subscribe(result => {
+        this.restServiceProvider.postService(config['onlineAppoint'], postData).subscribe(result => {
           this.loaderShow = false;
           if (result.Response.status == 'success') {
             this.toastProvider.presentToastTop("Request submitted successfully.");
-            this.message = '';
+            this.doctorsSound = '';
+            this.appointSound = '';
+            this.addressSound = '';
+            this.patientMobile = null;
+            this.myDate = null;
+            this.Comment = '';
             this.name = '';
             this.address = '';
             this.checkup = '';

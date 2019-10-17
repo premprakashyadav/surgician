@@ -41,21 +41,25 @@ export class HealthcheckPage {
     public actionSheetCtrl: ActionSheetController, public nav: Nav
   ) {
     this.ports = [{ name: "Preventive Health Checkup" },
-    { name: "Senior citizen health checkup" },
-    { name: "Women's health checkup" },
-    { name: "Family health checkup" },
-    { name: "Vitamin test" },
-    { name: "Corporate health checkup" },
-    { name: "Complete child checkup" },
-    { name: "School health checkup" },
-    { name: "Cardiac health checkup" },
-    { name: "Arthritis health checkup" },
-    { name: "Liver test" },
-    { name: "Anemia test" },
-    { name: "Kidney test" },
-    { name: "Thyroid test" },
-    { name: "PCOD test" },
-    { name: "Other test" }];
+    { name: "Senior Citizen Health Checkup" },
+    { name: "Women's Health Checkup" },
+    { name: "Family Health Checkup" },
+    { name: "Corporate Health Checkup" },
+    { name: "Complete Child Checkup" },
+    { name: "School Health Checkup" },
+    { name: "Cardiac Health Checkup" },
+    { name: "Arthritis Health Checkup" },
+    { name: "Diabetes Health Checkup" },
+    { name: "Infertility Health Checkup" },
+    { name: "Pre-operative Health Checkup" },
+    { name: "Cancer Screening Health Checkup" },
+    { name: "Vitamin Test" },
+    { name: "Liver Test" },
+    { name: "Anemia Test" },
+    { name: "Kidney Test" },
+    { name: "Thyroid Test" },
+    { name: "PCOD Test" },
+    { name: "Other Test" }];
 
   }
   ionViewDidLoad() {

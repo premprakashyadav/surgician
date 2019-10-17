@@ -38,8 +38,8 @@ export class VisitorsPage {
                 public actionSheetCtrl: ActionSheetController,public nav: Nav
               ) {
                 this.ports = [
-                  { name: "Stress Test" },
-                  { name: "Color Doppler" },
+                  { name: "STRESS TEST" },
+                  { name: "COLOR DOPPLER" },
                   { name: "ECG" },
                   { name: "Digital X-ray" },
                   { name: "Digital Mammography" },
@@ -53,8 +53,8 @@ export class VisitorsPage {
                   { name: "HEAMOGLOBIN" },
                   { name: "C.B.C." },
                   { name: "E.S.R." },
-                  { name: "Malaria Test (M.P.)" },
-                  { name: "Blood Group & Rh Factor" },
+                  { name: "MALARIA TEST (M.P.)" },
+                  { name: "BLOOD GROUP & RH FACTOR" },
                   { name: "PLATELET COUNT" },
                   { name: "G6PD" },
                   { name: "SICKLING TEST" },
@@ -138,10 +138,14 @@ export class VisitorsPage {
                   { name: "INFERTILITY PROFILE" },
                   { name: "PREGNANCY PROFILE" },
                   { name: "HISTOPATHOLOGY" },
-                  { name: "Blood Culture" },
+                  { name: "BLOOD CULTURE" },
                   { name: "F.N.A.C." },
                   { name: "TROP I" },
-                  { name: "Others" }
+                  { name: "LIPOPROTEIN - A" },
+                  { name: "BONE MINERAL DENSITY" },
+                  { name: "ULTRASOUND" },
+                  { name: "CRP - HS" },
+                  { name: "OTHERS" }
                 ];
     }
     ionViewDidLoad() {

@@ -74,6 +74,36 @@ page-healthcheck {
               border:2px solid #f4f4f4;
               margin: 0 0 10px 0;
               padding-left:0;
+              ion-textarea{
+                padding-bottom: 62px;
+                min-height: 180px;
+                .text-input-md{
+                  padding-bottom: 62px;
+                 margin: 13px 8px 62px 8px;
+              }
+              &:before{
+                position: absolute;
+                content: 'We will find nearest best hospital/diagnostics center for you.';
+                bottom: 28px;
+                left: 11px;
+                color: blue;
+                font-size: 13px;
+                font-weight: bold;
+                letter-spacing: 0.5px;
+              
+            }
+                &:after{
+                  position: absolute;
+                  content: '*Not sure Dial below helpdesk No.';
+                  bottom: 5px;
+                  left: 11px;
+                  color: red;
+                  font-size: 13px;
+                  font-weight: bold;
+                  letter-spacing: 0.5px;
+                
+              }
+              }
               button{
                 font-size: 1.8rem;
               }
