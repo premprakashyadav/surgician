@@ -122,8 +122,8 @@ export class DoctorPage {
             this.doctorsSound = '';
             this.appointSound = '';
             this.addressSound = '';
-            this.patientMobile = null;
-            this.myDate = null;
+            this.patientMobile = '';
+            this.myDate = '';
             this.Comment = '';
             this.name = '';
             this.address = '';
