@@ -33,14 +33,14 @@
 
       </ion-slides>
       <ion-list>
-        <ion-item class="select_box">
+        <ion-item class="select_box mand">
           <ion-label>Lab Test</ion-label>
           <ionic-selectable item-content [isMultiple]="true" [(ngModel)]="port" [items]="ports" itemValueField="name"
             itemTextField="name" [canClear]="true" [canSearch]="true" (onChange)="portChange($event)" #portComponent>
           </ionic-selectable>
 
         </ion-item>
-        <ion-item>
+        <ion-item class="mand">
           <ion-input type="text" placeholder="Address" [(ngModel)]="address" name="address"></ion-input>
         </ion-item>
         <ion-item>

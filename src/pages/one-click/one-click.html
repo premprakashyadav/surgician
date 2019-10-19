@@ -18,16 +18,16 @@
 
       </ion-slides>
       <ion-list>
-        <ion-item>
+        <ion-item class="mand">
           <ion-input type="text" placeholder="Patient's Name" [(ngModel)]="name" name="name"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item class="mand">
           <ion-input type="number" placeholder="Patient's Mobile No." [(ngModel)]="checkup" name="checkup"></ion-input>
         </ion-item>
 
 
         <ion-item>
-          <ion-textarea placeholder="Help us if describe more about Patient's problems or any medications" #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()"
+          <ion-textarea placeholder="Help us if describe more about patient's problems or any medications" #myInput id="myInput" rows="5" maxLength="500" (keyup)="resize()"
             [(ngModel)]="message"></ion-textarea>
         </ion-item>
 

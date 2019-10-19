@@ -53,6 +53,7 @@ export class HealthcheckPage {
     { name: "Infertility Health Checkup" },
     { name: "Pre-operative Health Checkup" },
     { name: "Cancer Screening Health Checkup" },
+    { name: "Residential Health Checkup" },
     { name: "Vitamin Test" },
     { name: "Liver Test" },
     { name: "Anemia Test" },

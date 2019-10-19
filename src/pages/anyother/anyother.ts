@@ -79,7 +79,7 @@ export class AnyotherPage {
   }
 
   submitOrder() {
-    if (this.checkup && this.equipment && this.name) {
+    if (this.checkup && this.name) {
 
       // if(!this.attachmentImg){
       //   this.toastProvider.presentToastTop("Attach one refrence image.");

@@ -121,6 +121,34 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', end
 .footer_img{
   padding: 20px 0;
 }
+.ionic-selectable-icon-inner{
+  color:#fff!important;
+}
+.mand{
+  &:after{
+    content: '*';
+    color: red;
+    font-size: 26px;
+    position: absolute;
+    right: 11px;
+    top: -2px;
+  }
+}
+
+// .required .text-input::-webkit-input-placeholder:after {
+//   content: " *";
+//   color: red;
+// }
+
+// .required .text-input:-moz-placeholder:after {
+//   content: " *";
+//   color: red;  
+// }
+
+// .required .text-input:-ms-input-placeholder:after {  
+//   content: " *";
+//   color: red;  
+// }
 
 
 /*!

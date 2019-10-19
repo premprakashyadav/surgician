@@ -21,12 +21,14 @@ export class LoggedinPage  {
     
   }
   ionViewDidLoad() {
-    this.userDetails = localStorage.getItem('profileData');
-    console.log(this.userDetails.name);
+    
     setTimeout(() => {
-      this.userDetails = JSON.parse(this.userDetails);
-      this.userName =this.userDetails.name;
-    },5000);
+      this.userDetails = localStorage.getItem('profileData');
+      if(this.userDetails) {
+        this.userName = JSON.parse(this.userDetails);
+        this.userName = this.userName.name;
+      }
+    },1000);
   
     }
     medicalRecords() {

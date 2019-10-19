@@ -7,7 +7,7 @@
 
 </ion-header>
 <ion-content padding class="bg_image">
-  <ion-card>
+  <ion-card class="login_form">
     <ion-card-content>
       <ion-slides autoplay="3000" pager loop>
 
@@ -17,10 +17,10 @@
 
       </ion-slides>
       <ion-list>
-        <ion-item>
+        <ion-item class="mand">
           <ion-input type="text" placeholder="Patient's Name" [(ngModel)]="name" name="name"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item class="mand">
           <ion-input type="number" placeholder="Patient's Mobile No." [(ngModel)]="checkup" name="checkup"></ion-input>
         </ion-item>
         <ion-item>
@@ -31,8 +31,8 @@
 
         <ion-item>
           <ion-textarea
-            placeholder="Help us if describe more (Consulting or referral Doctor's Name & Mobile No. also Mention in short patient's problem etc...)"
-            #myInput id="myInput" rows="6" maxLength="500" (keyup)="resize()" [(ngModel)]="message"></ion-textarea>
+            placeholder="Help us if describe more (Consulting or referral Doctor's Name & Mobile No. also Mention in short patient's problems etc...)"
+            #myInput id="myInput" rows="5" maxLength="500" (keyup)="resize()" [(ngModel)]="message"></ion-textarea>
         </ion-item>
 
 

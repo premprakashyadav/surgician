@@ -32,8 +32,8 @@
 
       </ion-slides>
       <ion-list>
-        <ion-item class="select_box">
-          <ion-label>Lab Test</ion-label>
+        <ion-item class="select_box mand">
+          <ion-label>Lab Test </ion-label>
           <ionic-selectable item-content [isMultiple]="true" [(ngModel)]="port" [items]="ports" itemValueField="name"
             itemTextField="name" [canClear]="true" [canSearch]="true" (onChange)="portChange($event)" #portComponent>
           </ionic-selectable>
@@ -41,7 +41,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-textarea
+          <ion-textarea class="required"
             placeholder="Help us if describe more (Patient's Name & Mobile No, Doctor's Name & Mobile No. & Mention in short patient's problems & Lab tests etc...)"
             #myInput id="myInput" rows="2" maxLength="500" (keyup)="resize()" [(ngModel)]="message"></ion-textarea>
         </ion-item>

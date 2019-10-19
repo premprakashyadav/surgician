@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Health Check<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon>
+    <ion-title>Health Checks<ion-icon name="md-log-out" (click)="logOut()" float-right></ion-icon>
     </ion-title>
   </ion-navbar>
 
@@ -34,18 +34,18 @@
       </ion-slides>
 
       <ion-list>
-        <ion-item class="select_box">
+        <ion-item class="select_box mand">
           <ion-label>Health Checkup Services</ion-label>
           <ionic-selectable item-content [isMultiple]="true" [(ngModel)]="port" [items]="ports" itemValueField="name"
             itemTextField="name" [canClear]="true" [canSearch]="true" (onChange)="portChange($event)" #portComponent>
           </ionic-selectable>
         </ion-item>
-        <ion-item>
+        <ion-item class="mand">
           <ion-input type="text" placeholder="Address" [(ngModel)]="address" name="address"></ion-input>
         </ion-item>
         <ion-item>
           <ion-textarea
-            placeholder="Help us if describe more (Patient's Name & Mobile No, Doctor's Name & Mobile No. & Mention in short patient's problem etc...)"
+            placeholder="Help us if describe more (Patient's Name & Mobile No, Doctor's Name & Mobile No. & Mention in short patient's problems etc...)"
             #myInput id="myInput" rows="2" maxLength="500" (keyup)="resize()" [(ngModel)]="message"></ion-textarea>
         </ion-item>
 

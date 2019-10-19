@@ -83,7 +83,7 @@ export class HospitalPage {
   }
 
   submitOrder() {
-    if (this.doctorsSound && this.appointSound && this.addressSound && this.addressSound) {
+    if (this.doctorsSound && this.appointSound && this.addressSound && this.myTime) {
 
       // if(!this.attachmentImg){
       //   this.toastProvider.presentToastTop("Attach one refrence image.");
@@ -118,6 +118,7 @@ export class HospitalPage {
             this.addressSound = '';
             this.patientMobile = null;
             this.myDate = null;
+            this.myTime = '';
             this.Comment = '';
             this.name = '';
             this.address = '';

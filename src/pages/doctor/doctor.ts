@@ -90,7 +90,7 @@ export class DoctorPage {
   }
 
   submitOrder() {
-    if (this.doctorsSound && this.appointSound && this.addressSound && this.addressSound) {
+    if (this.doctorsSound && this.appointSound && this.addressSound) {
 
       // if(!this.attachmentImg){
       //   this.toastProvider.presentToastTop("Attach one refrence image.");

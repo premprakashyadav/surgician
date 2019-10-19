@@ -49,6 +49,9 @@ export class HomehealthcarePage {
       { name: "X Ray at Home" },
       { name: "Home ICU Setup" },
       { name: "Special Child Care at Home" },
+      { name: "E.C.G. at home" },
+      { name: "Oxygen Service at home" },
+      { name: "Ambulatory Blood Pressure Service at home" },
       { name: "Ambulance Service" },
       { name: "NRI Home Care" },
       { name: "Elderly Care Services" },
@@ -58,7 +61,7 @@ export class HomehealthcarePage {
       { name: "Bed Ridden Care" },
       { name: "Post Hospitalisation Care" },
       { name: "Post Surgery Care" },
-      { name: "Cancer/Stroke/Cardic Care" },
+      { name: "Cancer/Stroke/Cardiac Care" },
       { name: "Yoga at home" },
       { name: "Fitness Trainer at home" },
       { name: "Other Services" }];
@@ -113,7 +116,7 @@ export class HomehealthcarePage {
   };
 
   submitOrder() {
-    if (this.checkup && this.equipment) {
+    if (this.checkup && this.equipment && this.address) {
 
       // if(!this.attachmentImg){
       //   this.toastProvider.presentToastTop("Attach one refrence image.");

@@ -10,7 +10,7 @@
 
 
 <ion-content padding class="bg_image">
-
+  <small>*Hospital use only</small>
   <ion-card class="login_form">
     <ion-card-content>
       <ion-slides autoplay="3000" pager loop>
@@ -23,19 +23,19 @@
       </ion-slides>
       <ion-list>
 
-        <ion-item>
+        <ion-item class="mand">
           <ion-input type="text" placeholder="Hospital's Name & address" [(ngModel)]="myTime" name="name"></ion-input>
         </ion-item>
 
-        <ion-item>
+        <ion-item class="mand">
           <ion-input type="text" placeholder="Patient's Name" [(ngModel)]="doctorsSound" name="patname"></ion-input>
         </ion-item>
 
-        <ion-item>
+        <ion-item class="mand">
           <ion-input type="number" placeholder="Patient's Mobile No." [(ngModel)]="appointSound" name="patmobile"></ion-input>
         </ion-item>
         
-        <ion-item>
+        <ion-item class="mand">
           <ion-input type="text" placeholder="Consulting Doctor's Name" [(ngModel)]="addressSound" name="ConsultName">
           </ion-input>
         </ion-item>
@@ -53,6 +53,12 @@
         <ion-item>
           <ion-input type="number" placeholder="Reference Doctor's Mobile No." [(ngModel)]="patientMobile" name="RefDoctor">
           </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-textarea
+            placeholder="Help us if describe more (Consulting Doctor's mobile No. (if possible) also Mention in short patient's problems etc...)"
+            #myInput id="myInput" rows="5" maxLength="500" (keyup)="resize()" [(ngModel)]="Comment"></ion-textarea>
         </ion-item>
 
 

@@ -126,7 +126,7 @@ export class VisitorsPage {
                   { name: "G6PD" },
                   { name: "Hb1AC" },
                   { name: "IRON" },
-                  { name: "Vitamin B 12" },
+                  { name: "VITAMIN B 12" },
                   { name: "URINE ROUTINE" },
                   { name: "URINE CULTURE & SENSITIVITY" },
                   { name: "PREGNANCY TEST" },

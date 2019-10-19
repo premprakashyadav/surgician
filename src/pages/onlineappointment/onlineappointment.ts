@@ -293,7 +293,7 @@ export class OnlineappointmentPage {
   };
 
   submitOrder() {
-    if (this.doctorsSound && this.checkup && this.appointSound && this.addressSound && this.myDate && this.myTime) {
+    if (this.doctorsSound && this.checkup && this.patientMobile && this.appointSound && this.addressSound && this.myDate && this.myTime) {
 
       // if(!this.attachmentImg){
       //   this.toastProvider.presentToastTop("Attach one refrence image.");
@@ -307,7 +307,7 @@ export class OnlineappointmentPage {
         "address": this.addressSound,
         "appointment": this.appointSound,
         "service": this.service,
-        "appointdate": this.myDate,
+        "appointdate": moment(this.myDate).format('DD MMM YYYY'),
         "appointtime": this.myTime,
         "checkup": JSON.stringify(this.checkup),
         "patientMobile": this.patientMobile,
