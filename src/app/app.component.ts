@@ -8,6 +8,7 @@ import { ToastProvider } from '../services/toast/toast';
 import { Network } from '@ionic-native/network';
 import { AlertProvider } from '../services/alert/alert';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 @Component({
   templateUrl: 'app.html'
 })
@@ -25,7 +26,8 @@ export class MyApp {
     public toastProvider: ToastProvider,
     public network: Network,
     public alertProvider: AlertProvider,
-    public keyboard: Keyboard) {
+    public keyboard: Keyboard,
+    private androidPermissions: AndroidPermissions) {
     this.initializeApp();
 
 
@@ -76,6 +78,14 @@ export class MyApp {
       if (localStorage.getItem("isLogin") == "Yes") {
         this.getUserInfo();
       }
+
+      
+      this.androidPermissions.requestPermissions(
+        [
+          this.androidPermissions.PERMISSION.CAMERA,
+          this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE
+        ]
+      );
 
 
     });

@@ -75,14 +75,26 @@ page-one-click {
               margin: 0 0 10px 0;
               padding-left:0;
               ion-textarea{
-                padding-bottom: 21px;
+                padding-bottom: 62px;
+                min-height: 180px;
                 .text-input-md{
-                  padding-bottom: 21px;
-                 margin: 13px 8px 21px 8px;
+                  padding-bottom: 62px;
+                 margin: 13px 8px 62px 8px;
               }
+              &:before{
+                position: absolute;
+                content: 'Ask now quickly,we help you instantly.';
+                bottom: 28px;
+                left: 11px;
+                color: blue;
+                font-size: 13px;
+                font-weight: bold;
+                letter-spacing: 0.5px;
+              
+            }
                 &:after{
                   position: absolute;
-                  content: '*Not sure Dial below helpdesk No.';
+                  content: '*Not sure about test Dial below helpdesk No.';
                   bottom: 5px;
                   left: 11px;
                   color: red;

@@ -55,7 +55,7 @@ export class SecondopenionPage {
   }
 
   presentActionSheet() {
-    if (this.attachmentImg && this.attachmentImg.length > 8) {
+    if (this.attachmentImg && this.attachmentImg.length >= 8) {
 
       this.toastProvider.presentToastTop('More than 8 attachment are not allowed.');
 

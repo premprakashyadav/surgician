@@ -38,6 +38,7 @@ import { Media } from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { IonicSelectableModule } from 'ionic-selectable';
     Keyboard,
     Media,
     File,
-    SpeechRecognition
+    SpeechRecognition,
+    AndroidPermissions
   ]
 })
 export class AppModule {}

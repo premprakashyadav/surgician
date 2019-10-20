@@ -20,6 +20,7 @@
     "@angular/http": "5.2.11",
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
+    "@ionic-native/android-permissions": "^4.20.0",
     "@ionic-native/base64": "^4.20.0",
     "@ionic-native/call-number": "^5.8.0",
     "@ionic-native/camera": "^4.20.0",
@@ -45,6 +46,7 @@
     "com.razorpay.cordova": "git+https://github.com/razorpay/razorpay-cordova.git",
     "cordova-android": "^8.1.0",
     "cordova-ios": "^5.0.1",
+    "cordova-plugin-android-permissions": "^1.0.2",
     "cordova-plugin-camera": "4.0.3",
     "cordova-plugin-crop": "0.4.0",
     "cordova-plugin-device": "^2.0.2",
@@ -102,7 +104,8 @@
       "cordova-plugin-media": {},
       "cordova-plugin-file": {},
       "cordova-plugin-speechrecognition": {},
-      "call-number": {}
+      "call-number": {},
+      "cordova-plugin-android-permissions": {}
     },
     "platforms": [
       "android",
