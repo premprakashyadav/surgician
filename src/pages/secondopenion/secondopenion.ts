@@ -17,9 +17,14 @@ import { ActionSheetController } from 'ionic-angular';
 })
 export class SecondopenionPage {
   @ViewChild('myInput') myInput: ElementRef;
-  public Comment;
+  public message = '';
   public attachmentImg: any;
   public loaderShow: boolean = false;
+  public name = '';
+  public address = '';
+  public service = 'Second opinion';
+  public checkup = '';
+  public equipment = '';
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -50,55 +55,69 @@ export class SecondopenionPage {
   }
 
   presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Modify your album',
-      buttons: [
-        {
-          text: 'Upload from Library',
-          handler: () => {
-            this.openPicker()
+    if (this.attachmentImg && this.attachmentImg.length > 8) {
+
+      this.toastProvider.presentToastTop('More than 8 attachment are not allowed.');
+
+
+    } else {
+      let actionSheet = this.actionSheetCtrl.create({
+        title: 'Modify your album',
+        buttons: [
+          {
+            text: 'Upload from Library',
+            handler: () => {
+              this.openPicker()
+            }
+          }, {
+            text: 'Camera',
+            handler: () => {
+              this.opemcam()
+            }
+          }, {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
           }
-        }, {
-          text: 'Camera',
-          handler: () => {
-            this.opemcam()
-          }
-        }, {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
+        ]
+      });
+      actionSheet.present();
+    }
+
+
   }
 
 
   submitOrder() {
-    if (this.Comment) {
+    if (this.message) {
 
       // if(!this.attachmentImg){
       //   this.toastProvider.presentToastTop("Attach one refrence image.");
 
       // }
       // else{
-      let postData = {
-        "userID": localStorage.getItem("userID"),
-        "description": this.Comment ? this.Comment : 'No Comment',
-        "upload_files": this.attachmentImg ? this.attachmentImg : ""
-      }
+        let postData = {
+          "userID": localStorage.getItem("userID"),
+          "name": this.name,
+          "message": this.message ? this.message : 'No Comment',
+          "address": this.address,
+          "service": this.service,
+          "checkup": this.checkup,
+          "equipment": this.equipment,
+          "upload_files": this.attachmentImg ? this.attachmentImg : ""
+        }
       if (this.network.type === 'none') {
         this.alertProvider.showWithTitle('No Internet Connection', 'Please connect internet to start')
       }
       else {
         this.loaderShow = true;
-        this.restServiceProvider.postService(config['placeOrder'], postData).subscribe(result => {
+        this.restServiceProvider.postService(config['commmonForm'], postData).subscribe(result => {
           this.loaderShow = false;
           if (result.Response.status == 'success') {
             this.toastProvider.presentToastTop("Request submitted successfully.");
-            this.Comment = '';
+            this.message = '';
             this.attachmentImg = undefined;
           }
           else {
@@ -117,7 +136,7 @@ export class SecondopenionPage {
 
 
   opemcam() {
-    this.sharedDataProvider.openCamera().then(data => {
+    this.sharedDataProvider.openCamera(this.attachmentImg).then(data => {
       console.log("data", data);
       if (data && data.length > 0) {
         this.attachmentImg = data;
@@ -127,7 +146,7 @@ export class SecondopenionPage {
 
 
   openPicker() {
-    this.sharedDataProvider.openImagePicker().then(data => {
+    this.sharedDataProvider.openImagePicker(this.attachmentImg).then(data => {
       if (data && data.length > 0) {
         this.attachmentImg = data;
       }
@@ -136,5 +155,13 @@ export class SecondopenionPage {
 
   viewImg(i) {
     this.sharedDataProvider.viewImages('data:image/png;base64,' + i);
+  }
+
+  deleteImg(index) {
+    this.attachmentImg.splice(index, 1);
+  }
+
+  ionViewDidLeave() {
+    this.attachmentImg = null;
   }
 }

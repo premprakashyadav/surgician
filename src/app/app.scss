@@ -134,6 +134,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', end
     top: -2px;
   }
 }
+.attach_grid.grid .row .col{
+  padding: 10px;
+}
+.attach_img_cont{
+  height: 88px;
+  overflow: hidden;
+}
+
+.attach_img_btns{
+  display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.5);
+}
 
 // .required .text-input::-webkit-input-placeholder:after {
 //   content: " *";

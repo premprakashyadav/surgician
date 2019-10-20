@@ -251,7 +251,7 @@ export class VisitorsPage {
   
    opemcam()
    {
-       this.sharedDataProvider.openCamera().then(data =>{
+       this.sharedDataProvider.openCamera(this.attachmentImg).then(data =>{
        console.log("data",data);
        if (data && data.length > 0) {
            this.attachmentImg = data;
@@ -261,7 +261,7 @@ export class VisitorsPage {
   
   
    openPicker(){
-       this.sharedDataProvider.openImagePicker().then(data =>{
+       this.sharedDataProvider.openImagePicker(this.attachmentImg).then(data =>{
            if (data && data.length > 0) {
                this.attachmentImg = data;
            }
