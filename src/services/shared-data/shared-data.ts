@@ -10,6 +10,7 @@ import { Base64 } from '@ionic-native/base64';
 export class SharedDataProvider {
   public userEmail;
   public imageLists: any[] = [];
+  public imagemincount: any;
   constructor(public network: Network,
     public camera: Camera,
     public crop: Crop,
@@ -27,7 +28,7 @@ export class SharedDataProvider {
     const options: CameraOptions = {
       quality: 50,
       //allowEdit: true,
-      targetWidth: 400,
+      //targetWidth: 400,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
@@ -42,12 +43,20 @@ export class SharedDataProvider {
 
   openImagePicker(imglength) {
     this.imageLists = imglength ? imglength : [];
+    this.imagemincount = this.imageLists.length;
+    if (this.imagemincount >= 5 && this.imagemincount < 8) {
+      this.imagemincount = 8 - this.imagemincount;
+    } else {
+      if (this.imagemincount >= 0 && this.imagemincount < 5) {
+        this.imagemincount = 4;
+      }
+    }
     const options: ImagePickerOptions = {
       quality: 75,
       width: 400,
       // height: 500,
       outputType: 1,
-      maximumImagesCount: 4
+      maximumImagesCount: this.imagemincount
     }
     return this.imagePicker.getPictures(options).then((results) => {
       for (var i = 0; i < results.length; i++) {
@@ -81,7 +90,7 @@ export class SharedDataProvider {
     );
   }
 
-viewImages(imgUrl) {
+  viewImages(imgUrl) {
     this.photoViewer.show(imgUrl);
   }
 }

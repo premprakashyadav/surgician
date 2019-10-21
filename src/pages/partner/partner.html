@@ -35,8 +35,8 @@
 
       </ion-list>
       <p class="attach_note">If more than 8 pages attachment, you can email us <b>asknowhelpdesk@gmail.com</b></p>
-      <button ion-button block (click)="presentActionSheet()" color="purple"> Attach Documents</button>
-      <span *ngIf="attachmentImg">Documents attached</span>
+      <button ion-button block (click)="presentActionSheet()" color="purple"> Attach Documents &nbsp; <ion-badge color="secondary" *ngIf="attachmentImg">{{attachmentImg.length}}</ion-badge></button>
+      <span *ngIf="attachmentImg"><strong>{{attachmentImg.length}}</strong> Prescription attached</span>
 
       <ion-grid class="attach_grid">
         <ion-row>

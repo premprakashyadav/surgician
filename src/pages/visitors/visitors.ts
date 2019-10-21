@@ -166,29 +166,38 @@ export class VisitorsPage {
       }
   
       presentActionSheet() {
-        let actionSheet = this.actionSheetCtrl.create({
-          title: 'Modify your album',
-          buttons: [
-            {
-              text: 'Upload from Library',
-              handler: () => {
-                this.openPicker()
+        if (this.attachmentImg && this.attachmentImg.length >= 8) {
+    
+          this.toastProvider.presentToastTop('More than 8 attachment are not allowed.');
+    
+    
+        } else {
+          let actionSheet = this.actionSheetCtrl.create({
+            title: 'Modify your album',
+            buttons: [
+              {
+                text: 'Upload from Library',
+                handler: () => {
+                  this.openPicker()
+                }
+              }, {
+                text: 'Camera',
+                handler: () => {
+                  this.opemcam()
+                }
+              }, {
+                text: 'Cancel',
+                role: 'cancel',
+                handler: () => {
+                  console.log('Cancel clicked');
+                }
               }
-            },{
-              text: 'Camera',
-              handler: () => {
-                this.opemcam()
-              }
-            },{
-              text: 'Cancel',
-              role: 'cancel',
-              handler: () => {
-                console.log('Cancel clicked');
-              }
-            }
-          ]
-        });
-        actionSheet.present();
+            ]
+          });
+          actionSheet.present();
+        }
+    
+    
       }
 
       portChange(event: {
@@ -268,8 +277,16 @@ export class VisitorsPage {
            })
    }
   
-   viewImg(i){
-       this.sharedDataProvider.viewImages('data:image/png;base64,' + i);
-   }
+   viewImg(i) {
+    this.sharedDataProvider.viewImages('data:image/png;base64,' + i);
+  }
+
+  deleteImg(index) {
+    this.attachmentImg.splice(index, 1);
+  }
+
+  ionViewDidLeave() {
+    this.attachmentImg = null;
+  }
   }
   

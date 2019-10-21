@@ -53,18 +53,6 @@
         </ion-row>
         </ion-grid>
 
-      <ion-grid class="attach_grid">
-        <ion-row>
-          <ion-col *ngFor="let imgVal of attachmentImg; let index = index" col-6>
-            <div class="attach_img_cont"><img src="data:image/jpeg;base64,{{imgVal}}"/></div>
-            <div class="attach_img_btns">
-                <button ion-button color="secondary" (click)="viewImg(imgVal)"><ion-icon name="ios-expand-outline"></ion-icon></button>
-                <button ion-button color="danger" (click)="deleteImg(index)"><ion-icon name="ios-trash"></ion-icon></button>
-            </div>
-            </ion-col>
-        </ion-row>
-        </ion-grid>
-
       <button ion-button block (click)="submitOrder()"> Submit</button>
       <div class="footer_img">
         <img src="assets/imgs/15.jpg" />
